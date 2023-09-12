@@ -1,0 +1,666 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+
+.clearfix {
+    float: none;
+    clear: both;
+}
+
+h2 {
+    font-size: 42px;
+    color: #ffc201;
+    display: block;
+    text-align: center;
+    margin: 30px 0 0 0;
+}
+
+h2 span {
+    color: #46d7af;
+}
+
+.shape_wrapper {
+    background: #c5eaff;
+    width: 600px;
+    height: 450px;
+    border: 12px solid #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 0px 8px 0px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 1px 0px 8px 0px rgba(0, 0, 0, 0.16);
+    box-shadow: 1px 0px 8px 0px rgba(0, 0, 0, 0.16);
+    overflow: hidden;
+    margin: 80px auto;
+}
+
+.shape_wrapper .shape_container {
+    padding: 30px;
+    position: relative;
+}
+/* shape 2 */
+
+.shape2 {
+    margin-top: 50px;
+    height: 100%;
+    padding-bottom: 30px;
+    overflow: hidden;
+}
+
+.shape2 .shape_container {
+    margin: 0 auto;
+    display: table;
+}
+
+.cloud_messages_wrapper {
+    float: left;
+    position: relative;
+}
+
+.cloud_messages_wrapper ul {
+    padding: 0;
+    list-style: none;
+}
+
+.cloud_messages_wrapper ul li {
+    display: block;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.cloud_messages_wrapper ul li:after {
+    content: '';
+    background: #8cc5f7;
+    width: 8px;
+    height: 100%;
+    position: absolute;
+    left: 10px;
+}
+
+.cloud_messages_wrapper ul:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 24px solid #8cc5f7;
+    position: absolute;
+    bottom: 28px;
+    left: 20px;
+}
+
+.cloud_messages_wrapper.part2 ul:after {
+    left: auto;
+    right: 20px;
+    bottom: -23px
+}
+
+.part1 ul li:nth-child(1) {
+    margin-bottom: 80px;
+}
+
+.part2 {
+    margin-top: 102px;
+    margin-left: -50px;
+}
+
+.part2 ul li:after {
+    right: 10px;
+    left: auto;
+}
+
+.part2 ul li:nth-child(2) .message_wrapper {
+    width: 80px;
+    float: right;
+}
+
+.part2 ul li:nth-child(2) .message_box_icon {
+    display: block;
+    float: none;
+    width: 0;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.part2 ul li:nth-child(2) .message_box_modal {
+    display: block;
+    margin-left: 0;
+    width: 100%;
+}
+
+.cloud_messages_wrapper ul li:last-child:after {
+    content: '';
+    background: transparent;
+}
+
+.message_wrapper {
+    background: #8cc5f7;
+    width: 160px;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.message_box_icon {
+    border-radius: 3px;
+    border: solid #2196ee;
+    border-top-color: #163d76;
+    border-top-width: 16px;
+    border-left-width: 20px;
+    border-right-width: 20px;
+    border-bottom-width: 11px;
+    display: inline-block;
+    float: left;
+}
+
+.message_box_modal {
+    display: inline-block;
+    margin-left: 20px;
+    width: 100px;
+}
+
+.message_box_modal span {
+    height: 4px;
+    border-radius: 4px;
+    background: #fff;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.message_box_modal span:nth-child(1) {
+    background: #2196ee;
+    animation: message_box1 3s linear infinite alternate;
+}
+
+.message_box_modal span:nth-child(2) {
+    animation: message_box2 4s 2s linear infinite alternate;
+}
+
+.message_box_modal span:nth-child(3) {
+    animation: message_box3 5s 3s linear infinite alternate;
+}
+
+.message_box_modal span:nth-child(4) {
+    width: 60%;
+}
+
+.message_box_modal span:nth-child(5) {
+    animation: message_box1 3s 4s linear infinite alternate;
+}
+
+.message_box_modal span:nth-child(6) {
+    animation: message_box4 5s 4s linear infinite alternate;
+}
+
+.message_box_modal span:last-child {
+    margin-bottom: 0;
+}
+
+@-webkit-keyframes message_box1 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 70%;
+    }
+}
+
+@keyframes message_box1 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 70%;
+    }
+}
+
+@-webkit-keyframes message_box2 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 90%;
+    }
+}
+
+@keyframes message_box2 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 90%;
+    }
+}
+
+@-webkit-keyframes message_box3 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes message_box3 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes message_box6 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 70%;
+    }
+}
+
+@keyframes message_box6 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 70%;
+    }
+}
+
+.cloudWrapper .cloud {
+    width: 250px;
+    height: 80px;
+    background: #2196ee;
+    display: inline-block;
+    border-radius: 50px;
+    position: relative;
+    float: left;
+    z-index: 11;
+    margin-bottom: 40px;
+    animation: moveCloud 10s linear infinite alternate;
+}
+
+.cloudWrapper .cloudOne {
+    width: 120px;
+    height: 100px;
+    display: inline-block;
+    position: absolute;
+    background: #2196ee;
+    border-radius: 50%;
+    top: -30px;
+    left: 31px;
+    animation: moveCloud 7s linear infinite alternate;
+}
+
+.cloudWrapper .cloudTwo {
+    width: 80px;
+    height: 60px;
+    display: inline-block;
+    position: absolute;
+    background: #2196ee;
+    border-radius: 50%;
+    top: -25px;
+    right: 40px;
+    animation: moveCloud 10s linear infinite alternate;
+}
+
+.cloudWrapper .smilyShape {
+    display: inline-block;
+    margin-top: -40px;
+    margin-left: 20px;
+    position: relative;
+}
+
+@-webkit-keyframes smilyShape {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes smilyShape {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.cloudWrapper .smilyBox {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #ff9e5c;
+    margin: 0 auto;
+    margin-top: 7px;
+}
+
+.smilyFace {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+}
+
+.smilyFace .eye-wrap {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #163d76;
+    margin: 0 10px;
+    position: relative;
+}
+
+.smilyFace .mouth-wrap {
+    width: 18px;
+    height: 12px;
+    display: block;
+    background: #163d76;
+    margin: 0 auto;
+    text-align: center;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    margin-top: 10px;
+}
+
+.smilyFace .barWrap {
+    border: 3px solid #163d76;
+    width: 20px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 50%;
+    position: absolute;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.smilyFace .bar1 {
+    transform: rotate(120deg);
+    left: -33px;
+    top: -28px;
+}
+
+.smilyFace .bar2 {
+    transform: rotate(-120deg);
+    left: 15px;
+    top: -28px;
+}
+
+.smilyShape .smilyFace {
+    position: absolute;
+    right: 20px;
+    top: 41px;
+}
+
+.smilyShape .smilyFace .eye-wrap {
+    animation: smilyeye 6s linear infinite alternate;
+}
+
+@-webkit-keyframes smilyeye {
+    0% {
+        transform: translate(0);
+    }
+    33% {
+        transform: translate(5px);
+    }
+    66% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translate(-5px);
+    }
+}
+
+@keyframes smilyeye {
+    0% {
+        transform: translate(0);
+    }
+    33% {
+        transform: translate(5px);
+    }
+    66% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translate(-5px);
+    }
+}
+
+.smilyShape .mouth-wrap {
+    border-radius: 0;
+    height: 4px;
+    margin-top: 15px;
+}
+
+.drop_wrapper {
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.drop_wrapper .drop {
+    width: 10px;
+    height: 10px;
+    background: #8cc5f7;
+    display: inline-block;
+    border-radius: 20px;
+    margin: 0 12px;
+    position: relative;
+    border-top-color: transparent;
+}
+
+.drop_wrapper .drop:before {
+    content: '';
+    background: #8cc5f7;
+    width: 8px;
+    height: 10px;
+    position: absolute;
+    top: -2px;
+    border-radius: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.drop_wrapper .drop:nth-child(1) {
+    animation: drop 1s linear infinite;
+}
+
+.drop_wrapper .drop:nth-child(2) {
+    top: 0px;
+    animation: drop 2s linear infinite;
+}
+
+.drop_wrapper .drop:nth-child(3) {
+    top: 5px;
+    animation: drop 5s linear infinite;
+}
+
+.drop_wrapper .drop:nth-child(4) {
+    top: 8px;
+    animation: drop 1s linear infinite;
+}
+
+.drop_wrapper .drop:nth-child(4) {
+    top: 10px;
+    animation: drop 4s linear infinite;
+}
+
+.drop_wrapper .drop:nth-child(5) {
+    animation: drop 7s linear infinite;
+}
+
+@-webkit-keyframes drop {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(80px);
+    }
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(80px);
+    }
+}
+
+.bucket {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #2196ee;
+    position: absolute;
+    bottom: -30px;
+    background: #8cc5f7;
+    border-top: none;
+    left: 57px;
+    z-index: 1;
+}
+
+.bucket:before {
+    content: '';
+    border: 1px solid #2196ee;
+    position: absolute;
+    left: -12px;
+    top: -12px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border-bottom-right-radius: 0;
+}
+
+.bucket:after {
+    content: '';
+    border: 1px solid #2196ee;
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border-bottom-left-radius: 0;
+}
+
+</style>
+    <body>
+<!-- Shape 2 -->
+<section class="shape_wrapper shape2">
+    <div class="shape_container">
+            <div class="cloud_messages_wrapper part1">
+                    <ul>
+                            <li>
+                                    <div class="message_wrapper">
+                                            <div class="message_box_icon"></div>
+                                            <div class="message_box_modal">
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                            </div>
+                                    </div>
+                            </li>
+                            <li>
+                                    <div class="message_wrapper">
+                                            <div class="message_box_icon"></div>
+                                            <div class="message_box_modal">
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                            </div>
+                                    </div>
+                            </li>
+                            <li>
+                                    <div class="message_wrapper">
+                                            <div class="message_box_icon"></div>
+                                            <div class="message_box_modal">
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                            </div>
+                                    </div>
+                            </li>
+                    </ul>
+            </div>
+            <div class="cloud_messages_wrapper part2">
+                    <ul>
+                            <li>
+                                    <div class="message_wrapper">
+                                            <div class="message_box_icon"></div>
+                                            <div class="message_box_modal">
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                            </div>
+                                    </div>
+                            </li>
+                            <li>
+                                    <div class="message_wrapper">
+                                            <div class="message_box_icon"></div>
+                                            <div class="message_box_modal">
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                            </div>
+                                    </div>
+                            </li>
+                    </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div class="cloudWrapper">
+                    <div class="cloud">
+                            <span class="cloudOne"></span>
+                            <span class="cloudTwo"></span>
+                            <div class="smilyFace">
+                                    <div class="eye1 eye-wrap">
+                                            <span class="bar1 barWrap"></span>
+                                    </div>
+                                    <div class="eye2 eye-wrap">
+                                            <span class="bar2 barWrap"></span>
+                                    </div>
+                                    <div class="mouth-wrap"></div>
+                            </div>
+                            <div class="drop_wrapper">
+                                    <span class="drop"></span>
+                                    <span class="drop"></span>
+                                    <span class="drop"></span>
+                                    <span class="drop"></span>
+                                    <span class="drop"></span>
+                            </div>
+                    </div>
+                    <div class="smilyShape">
+                            <div class="smilyBox">
+                                    <div class="smilyFace">
+                                            <div class="eye1 eye-wrap">
+                                                    <span class="bar1 barWrap"></span>
+                                            </div>
+                                            <div class="eye2 eye-wrap">
+                                                    <span class="bar2 barWrap"></span>
+                                            </div>
+                                            <div class="mouth-wrap"></div>
+                                    </div>
+                            </div>
+                    </div>
+            </div>
+            <div class="bucket">
+            </div>
+    </div>
+</section>
+    </body>
+{% endblock %}
+

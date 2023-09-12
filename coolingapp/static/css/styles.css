@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+body {
+font-family: 'Itim', cursive;
+}
+
+/* ------Navbar------- */
+
+.navbar.bg-body-tertiary.fixed-top {
+    background-color: #ffffff !important;
+  }
+
+.offcanvas.offcanvas-end {
+  background-color: #ffffff41 !important; 
+  backdrop-filter: blur(5px);
+  border-radius: 100px 0 0 50px;
+}
+
+.navbar-toggler-icon {
+  color: #76c1ff; 
+}
+
+.navbar-toggler {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0.25rem 0.5rem !important;
+    cursor: pointer !important;
+  }
+  
+.nav-link.active{
+  color: #ffffff !important;
+  font-size: 16px !important;
+}
+
+  .navbar-toggler-icon {
+    color: #ffffff !important;
+    font-size: 16px !important;
+  }
+
+  .nav-item {
+    margin-right: 10px;
+    margin-bottom: 8px;
+    font-size: 18px;
+    position: relative;
+  }
+  
+  .nav-link {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .offcanvas-title{
+    color: #ffffff;
+    margin-left: 100px;
+    margin-top: 20px;
+  }
+
+  .nav-item:hover::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #bedeff;
+}
+
+  .nav-link:hover {
+    color: #007ce2;
+  }
+  
+  .nav-link.active {
+    color: #ffc107;
+  }
+
+/* Style for the toggler button */
+.navbar-toggler {
+  background-color: #ffffff; /* Change to your desired color */
+  border: none; /* Remove the border */
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+/* Style for the offcanvas header */
+.offcanvas-header {
+  border-bottom: none; /* Remove the bottom border */
+  border-radius: 50px; /* Add rounded corners to the top */
+}
+
+/* Style for the offcanvas body */
+.offcanvas-body {
+  border-radius: 0 0 10px 10px; /* Add rounded corners to the bottom */
+  overflow: hidden; /* Hide overflowing content */
+}
+
+
+  .dropdown-menu {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+}
+
+.dropdown-item {
+    color: #86bef3;
+}
+
+.dropdown-item:hover {
+    background-color: #3973ac;
+    color: #ffffff;
+}
+
+/* Style for the search form */
+.d-flex.form-search {
+  position: relative;
+}
+
+/* Style for the search input */
+.form-control.me-2[type="search"] {
+  width: 100px; /* Adjust the width as needed */
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  background-color: #f0f0f0; /* Background color for the input */
+  color: #333; /* Text color */
+  font-size: 16px; /* Font size */
+  transition: background-color 0.2s, width 0.2s; /* Add smooth transitions */
+}
+
+/* Style for the search input when focused */
+.form-control.me-2[type="search"]:focus {
+  background-color: #fff;
+  width: 300px;
+}
+
+
+.btn.btn-outline-success[type="submit"] {
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn.btn-outline-success[type="submit"]:hover {
+  color: #9bf9fc; /* Change text color on hover */
+}
+
+
+/* ------Navbar------- */
+
+*
+{
+  margin: 0;
+  padding: 0;
+}
+
+.circle_sun {
+  height: 250px;
+  width: 400px;
+}
+
+#circle_container
+{
+  height: 180px;
+  width: 180px;
+  position: absolute;
+  /*Centering*/
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  
+  border-radius: 50%;
+  background-color: #DDD;
+  overflow: hidden;
+  animation: background 4s -3.5s infinite;
+  /*Nice modern drop-shadow*/
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+#load_wrapper
+{
+  height: 300%;
+  width: 300%;
+  margin-left: -50px;
+  transform: translate3d(-25%, 0, 0);
+  position: relative;
+  animation: rotation 4s linear infinite;
+}
+
+#sun, #moon
+{
+  position: absolute;
+  border-radius: 50%;
+  /*Make sure they are in the middle*/
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#sun
+{
+  width: 80px;
+  height: 80px;
+  background-color: #FFD475;
+  top: 40px;
+  box-shadow: 0 0 15px #FFCB57;
+}
+
+#moon
+{
+  width: 50px;
+  height: 50px;
+  background-color: #EEE;
+  top: 450px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.2) inset, 0 0 10px white;
+}
+
+#stars
+{
+  /*Has to be more than the amount of layers*/
+  perspective: 15px;
+	
+  width: 100%;
+  animation: stars 4s linear infinite;
+  opacity: 0.8;
+}
+
+.star
+{
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.star_layer
+{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  /*This is to make sure the upper-Z layer's don't shift downward*/
+  transform-origin: 100px 0;
+}
+
+@keyframes rotation
+{
+  0% {
+    transform: translate3d(-25%, 0, 0) rotate(0deg);
+  }
+  20% {
+    /*Sun goes down*/
+    transform: translate3d(-25%, 0, 0) rotate(50deg);
+  }
+  30% {
+    /*Moon rises*/
+    transform: translate3d(-25%, 0, 0) rotate(130deg);
+  }
+  70% {
+    /*Moon goes down*/
+    transform: translate3d(-25%, 0, 0) rotate(240deg);
+  }
+  80% {
+    /*Sun rises*/
+    transform: translate3d(-25%, 0, 0) rotate(310deg);
+  }
+  100% {
+    transform: translate3d(-25%, 0, 0) rotate(360deg);
+  }
+}
+
+@keyframes background
+{
+  0% {
+    background-color: #2896C3;
+  }
+  50% {
+    /*Night*/
+    background-color: #1E5267;
+  }
+  100% {
+    background-color: #2896C3;
+  }
+}
+
+@keyframes stars
+{
+  0% {
+    /*Invisible, not moving*/
+    opacity: 0;
+    padding-right: 0;
+  }
+  25% {
+    /*Start of movement*/
+    opacity: 0;
+    padding-right: 0;
+  }
+  50% {
+    /*Visible*/
+    opacity: 1;
+    padding-right: 25px;
+  }
+  75% {
+    opacity: 0;
+    padding-right: 50px;
+  }
+  100% {
+    opacity: 0;
+    padding-right: 0;
+  }
+}
+
+/* ------container------- */
+.container{
+  padding-top: 150px;
+}
+/* ------container------- */
+
+  html,
+body {
+  background-color: #85b9dd;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  position: relative;
+}
+
+.frame {
+  width: 500px;
+  height: auto;
+  margin: 15% auto 0;
+  position: absolute;
+  width: 100%;
+}
+
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/**
+ * Clouds
+ */
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.cloud {
+  position: absolute;
+  top: 20%;
+  width: 300px;
+  right: 0;
+  opacity: 1;
+}
+
+.cloud.front {
+  z-index: 9;
+}
+
+.cloud.distant {
+  z-index: 1;
+}
+
+.cloud.background {
+  z-index: 1;
+}
+
+/*Cloud Sizing*/
+.cloud.smaller {
+  margin-right: 400px;
+  width: 100px;
+  margin-top: 50px;
+}
+
+.cloud.small {
+  margin-right: 200px;
+  width: 150px;
+}
+
+.cloud.big {
+  width: 500px;
+  margin-top: 50px;
+  margin-right: 150px;
+}
+
+.cloud.massive {
+  width: 600px;
+  margin-top: 20px;
+  margin-right: 0px;
+}
+
+
+/*Cloud: Animation*/
+.cloud {
+  -webkit-animation-name: cloud-movement;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-direction: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 8s;
+
+  -moz-animation-name: cloud-movement;
+  -moz-animation-timing-function: linear;
+  -moz-animation-direction: forwards;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-duration: 8s;
+
+  animation-name: cloud-movement;
+  animation-timing-function: linear;
+  animation-direction: forwards;
+  animation-iteration-count: infinite;
+  animation-duration: 8s;
+}
+
+.slow {
+  -webkit-animation-duration: 9.2s;
+  -moz-animation-duration: 9.2s;
+  animation-duration: 9.2s;
+}
+
+.slower {
+  -webkit-animation-duration: 11.2s;
+  -moz-animation-duration: 11.2s;
+  animation-duration: 11.2s;
+}
+
+.slowest {
+  -webkit-animation-duration: 13.5s;
+  -moz-animation-duration: 13.5s;
+  animation-duration: 13.5s;
+}
+
+.super-slow {
+  -webkit-animation-duration: 20.5s;
+  -moz-animation-duration: 20.5s;
+  animation-duration: 20.5s;
+}
+
+@-webkit-keyframes cloud-movement {
+  0% {
+    opacity: 0.1;
+    -webkit-transform: translateX(300px);
+    -moz-transform: translateX(300px);
+    transform: translateX(300px);
+  }
+  10% {
+
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-1000px);
+    -moz-transform: translateX(-1000px);
+    transform: translateX(-1000px);
+  }
+}
+

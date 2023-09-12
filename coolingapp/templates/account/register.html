@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Register</title>
+{% endblock %}
+
+{% block content %}
+<section class="content-section content-section-single">
+<div class="content-container">
+        <h1 class="content-title">Register</h1>
+        <form action="{% url 'coolingapp:register' %}" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class = "form-field">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {{ form.username.errors }}
+            </div>
+            <div class = "form-field">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {{ form.email.errors }}
+            </div>
+            <div class = "form-field">
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+            </div>
+            <div class = "form-field">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+            </div>
+
+
+            <p>
+            <button type="submit" class="btn btn-primary">submit</button>
+            </p>
+        </form>
+</div>
+</section>
+{% endblock %}
