@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
@@ -65,7 +65,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            return render(request, 'index.html')
     else:
         form = RegisterForm()
 
