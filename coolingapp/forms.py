@@ -17,7 +17,7 @@ class ExtendedProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ("address", "phone", "job_positions")
+        fields = ("address", "phone", "job_positions", "profile_picture")
 
         widgets = {
             "address": forms.Textarea(attrs={"rows": 3})

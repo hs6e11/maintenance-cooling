@@ -17,12 +17,12 @@ import environ
 # env = environ.Env()
 # environ.Env.read_env()
 env_schema = dict(
-    DEBUG=(bool, False),
-    LANGUAGE_CODE=(str, 'en-us'),
-    TIME_ZONE=(str, 'UTC'),
-    USE_I18N=(bool, True),
-    USE_L10N=(bool, True),
-    USE_TZ=(bool, True),
+    # DEBUG=(bool, False),
+    # LANGUAGE_CODE=(str, 'en-us'),
+    # TIME_ZONE=(str, 'UTC'),
+    # USE_I18N=(bool, True),
+    # USE_L10N=(bool, True),
+    # USE_TZ=(bool, True),
     # STATIC_URL=(str, 'static/'),
     # LOGIN_URL=(str, 'login/'),
     LOG_LEVEL=(str, 'INFO'),
@@ -178,10 +178,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'coolingapp/static'),
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+
+# Define the directory where uploaded media files will be stored.
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'coolingapp', 'media')
 #Auth
 
 AUTH_USER_MODEL = "coolingapp.CustomUser"
 
-# LOGIN_REDIRECT_URL = "index"
-# LOGOUT_REDIRECT_URL = "index"
-# LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "index"
+LOGIN_URL = "login"
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

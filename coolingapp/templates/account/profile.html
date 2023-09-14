@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Profile</title>
+{% endblock %}
+
+{% block content %}
+<section class="content-section content-section-single">
+    <div class="content-container">
+        <h1 class="content-title">Profile {{ user.username }}</h1>
+        <form action="{% url 'coolingapp:profile' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            
+            <div class="form-field">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+                {{ form.first_name.errors }}
+            </div>
+            <div class="form-field">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+                {{ form.last_name.errors }}
+            </div>
+            <div class="form-field">
+                {{ extended_form.address.label_tag }}
+                {{ extended_form.address }}
+                {{ extended_form.address.errors }}
+            </div>
+            <div class="form-field">
+                {{ extended_form.phone.label_tag }}
+                {{ extended_form.phone }}
+                {{ extended_form.phone.errors }}
+            </div>
+            <div class="form-field">
+                {{ extended_form.job_positions.label_tag }}
+                {{ extended_form.job_positions }}
+                {{ extended_form.job_positions.errors }}
+            </div>
+            <p>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </p>
+        </form>
+    </div>
+</section>
+{% endblock %}
