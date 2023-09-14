@@ -41,6 +41,7 @@
                     </div>
                   </div>
                 {% csrf_token %}
+                <span class="error-message">{{ form.non_field_errors }}</span>
                 <div class="form-field">
                     <label for="id_username"><i class="fa fa-user-o" aria-hidden="true"></i> Username</label>
                     {{ form.username }}
