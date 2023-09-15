@@ -1184,23 +1184,16 @@ label[for="id_password2"] {
 
 label[for="id_username2"]:hover{
   color: #ffffff;
-  font-size: 16px;
-  font-weight: normal;
 }
+
 label[for="id_email"]:hover{
   color: #ffffff;
-  font-size: 16px;
-  font-weight: normal;
 }
 label[for="id_password1"]:hover{
   color: #ffffff;
-  font-size: 16px;
-  font-weight: normal;
 }
 label[for="id_password2"]:hover{
   color: #ffffff;
-  font-size: 16px;
-  font-weight: normal;
 }
 
 input[type="text"],
@@ -1242,8 +1235,7 @@ input[type="password"]::placeholder {
 
 input[type="text"]::placeholder,
 input[type="email"]::placeholder,
-input[type="password"]::placeholder,
-textarea::placeholder {
+input[type="password"]::placeholder{
     font-size: 14px;
     color: #9ec7de;
 }
@@ -1391,3 +1383,45 @@ canvas {
 
 
 /* ---------END Profilepage-------- */
+
+/* ---------Password_change page-------- */
+label[for="id_old_password"] {
+  color: #3989b7;
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 20px;
+}
+
+label[for="id_old_password"]:hover{
+  color: #ffffff;
+}
+
+label[for="id_old_password"] {
+  color: #3989b7;
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 20px;
+}
+
+label[for="id_new_password1"]:hover{
+  color: #ffffff;
+}
+
+label[for="id_new_password1"] {
+  color: #3989b7;
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 20px;
+}
+
+label[for="id_new_password2"]:hover{
+  color: #ffffff;
+}
+
+label[for="id_new_password2"] {
+  color: #3989b7;
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 20px;
+}
+/* ---------END Password_change page-------- */
