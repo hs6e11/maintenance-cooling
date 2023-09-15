@@ -1240,12 +1240,6 @@ input[type="password"]::placeholder {
     color: #60858a;
 }
 
-/* Style placeholders for textarea */
-textarea::placeholder {
-    color: #999;
-}
-
-/* Example: Increase font size and change color for placeholders */
 input[type="text"]::placeholder,
 input[type="email"]::placeholder,
 input[type="password"]::placeholder,
@@ -1262,6 +1256,7 @@ label[for="id_first_name"],
 label[for="id_last_name"],
 label[for="id_form.phone"],
 label[for="id_form.agency"],
+label[for="id_form.employee_id"],
 label[for="id_form.job_positions"] {
   color: #3989b7;
   font-size: 16px;
@@ -1270,31 +1265,34 @@ label[for="id_form.job_positions"] {
 
 label[for="id_first_name"]:hover{
   color: #ffffff;
-  font-size: 16px;
-  font-weight: normal;
 }
 label[for="id_last_name"]:hover{
   color: #ffffff;
-  font-size: 16px;
-  font-weight: normal;
 }
 label[for="id_form.phone"]:hover{
   color: #ffffff;
-  font-size: 16px;
-  font-weight: normal;
 }
 label[for="id_form.agency"]:hover{
   color: #ffffff;
-  font-size: 16px;
-  font-weight: normal;
 }
 label[for="id_form.job_positions"]:hover{
   color: #ffffff;
-  font-size: 16px;
-  font-weight: normal;
+}
+label[for="id_form.employee_id"]:hover{
+  color: #ffffff;
 }
 
 
+label[for="profile-picture-input"] {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+label[for="profile-picture-input"]:hover{
+  color: #3b76bf;
+}
 .input_phone{
   width: 345px;
 }
@@ -1311,17 +1309,26 @@ label[for="id_form.job_positions"]:hover{
   width: 345px;
 }
 
+.input_employee_id{
+  width: 345px;
+}
+
+.input_agency{
+  width: 345px;
+}
+
 .profileform {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 600px;
+  max-width: 650px;
   width: 75vw;
   padding: 1rem 1.5rem;
   border-radius: 7.5px;
   background: #ffffff54;
   backdrop-filter: blur(5px);
   box-shadow: 0 1px 10px -3px rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
 }
 
 .userprofile{
@@ -1332,5 +1339,39 @@ label[for="id_form.job_positions"]:hover{
 .userprofile:hover{
   color: #0061b1; 
 }
+
+.formup_pic{
+  margin-top: 20px;
+}
+
+.userpicture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pic_warning {
+  color: #0061b1;
+  margin-top: 10px;
+}
+
+/* canvasfortree */
+
+canvas {
+	display: block;
+	margin: auto;
+	object-fit: contain;
+	max-width: 100vw;
+	max-height: 100vh;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+	body {
+		background: #E5F4FF;
+	}
+}
+
 
 /* ---------END Profilepage-------- */

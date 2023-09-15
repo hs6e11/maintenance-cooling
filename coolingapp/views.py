@@ -6,7 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from coolingapp.forms import RegisterForm, UserProfileForm, ExtendedProfileForm, ProfilePictureForm
 from coolingapp.models import CustomUser, Profile
-
+from PIL import Image
+from io import BytesIO
 
 
 # Create your views here.
@@ -102,7 +103,20 @@ def profile(request: HttpRequest):
                 profile.user = user  # Assign the user to the profile
                 profile.save()
                 profile_picture_form.instance = profile  # Assign the profile to the profile picture form's instance
-                profile_picture_form.save()
+                
+                # Resize the image before saving it
+                profile_picture = profile_picture_form.save(commit=False)
+                image = Image.open(profile_picture.profile_picture)
+                max_width = 200  # Adjust the desired width
+                max_height = 200  # Adjust the desired height
+                image.thumbnail((max_width, max_height))
+                
+                # Save the resized image
+                image_data = BytesIO()
+                image.save(image_data, format='JPEG')  # Adjust format if needed
+                profile_picture.profile_picture = image_data
+
+                profile_picture.save()
             else:
                 # Update
                 extended_form.save()
