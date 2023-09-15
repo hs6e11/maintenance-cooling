@@ -7,8 +7,9 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
 
 class Profile(models.Model):
-    address = models.TextField(default="")
+    agency = models.CharField(default="")
     phone = models.CharField(max_length=10, default="")
     job_positions = models.CharField(max_length=100, default="")
-    profile_picture = models.ImageField(upload_to='profile_pics/', default='default.jpg')
+    employee_id = models.CharField(max_length=100, default="")
+    profile_picture = models.BinaryField(blank=True, null=True)
     user = models.OneToOneField("coolingapp.CustomUser", on_delete=models.CASCADE)

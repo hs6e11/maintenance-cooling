@@ -33,10 +33,11 @@ class ExtendedProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ("address", "phone", "job_positions", "profile_picture")
+        fields = ("agency", "phone", "job_positions", "employee_id")
 
         widgets = {
-            "address": forms.Textarea(attrs={"rows": 3, "placeholder": "Enter your address"}),
+            "agency": forms.TextInput(attrs={"placeholder": "Enter your agency"}),
             "phone": forms.TextInput(attrs={"placeholder": "Enter your phone number"}),
             "job_positions": forms.TextInput(attrs={"placeholder": "Enter your job positions"}),
+            "employee_id": forms.TextInput(attrs={"placeholder": "Enter your employee_id"}),
         }

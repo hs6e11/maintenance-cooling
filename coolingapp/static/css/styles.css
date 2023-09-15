@@ -862,6 +862,7 @@ label[for="id_password"]:hover{
 
 .form-field {
   margin-top: 15px;
+  position: relative;
 }
 
 input[type="text"],
@@ -1254,3 +1255,82 @@ textarea::placeholder {
 }
 
 /* ---------END Registerpage-------- */
+
+/* ---------Profilepage-------- */
+
+label[for="id_first_name"],
+label[for="id_last_name"],
+label[for="id_form.phone"],
+label[for="id_form.agency"],
+label[for="id_form.job_positions"] {
+  color: #3989b7;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+label[for="id_first_name"]:hover{
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
+label[for="id_last_name"]:hover{
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
+label[for="id_form.phone"]:hover{
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
+label[for="id_form.agency"]:hover{
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
+label[for="id_form.job_positions"]:hover{
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+
+.input_phone{
+  width: 345px;
+}
+
+.input_job_positions{
+  width: 345px;
+}
+
+.input_last_name{
+  width: 345px;
+}
+
+.input_first_name{
+  width: 345px;
+}
+
+.profileform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  width: 75vw;
+  padding: 1rem 1.5rem;
+  border-radius: 7.5px;
+  background: #ffffff54;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 1px 10px -3px rgba(0, 0, 0, 0.2);
+}
+
+.userprofile{
+  color: #577e9d;
+  font-size: 35px; 
+}
+
+.userprofile:hover{
+  color: #0061b1; 
+}
+
+/* ---------END Profilepage-------- */
