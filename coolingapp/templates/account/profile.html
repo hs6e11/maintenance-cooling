@@ -12,7 +12,15 @@
             <h1 class="userprofile">Profile : {{ user.username }} </h1>
             {% csrf_token %}
             {{ form.non_field_errors }}
-            
+            <div>
+            <div class="form-field">
+                <label for="{{ profile_picture_form.profile_picture.id_for_label }}">Profile Picture</label>
+                <div>
+                    <input type="file" name="profile_picture" id="profile-picture-input" accept="image/*" onchange="previewImage(this);" />
+                    <img id="image-preview" src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% endif %}" alt="Profile Picture" />
+                </div>
+            </div>    
+            </div>        
             <div class="form-field">
                 <label for="id_first_name">First name <i class="fa fa-user" aria-hidden="true"></i></label>
                 <div class="input_last_name">{{ form.first_name }}</div>
@@ -50,4 +58,18 @@
     </div>
 </section>
 </main>
+<script>
+    function previewImage(input) {
+        var preview = document.getElementById('image-preview');
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = '';
+        }
+    }
+</script>
 {% endblock %}

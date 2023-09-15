@@ -19,7 +19,7 @@ class RegisterForm(UserCreationForm):
     )
     class Meta(UserCreationForm.Meta):
         model = CustomUser
-        fields = UserCreationForm.Meta.fields + ("email",)
+        fields = UserCreationForm.Meta.fields + ("email", )
 
 class UserProfileForm(forms.ModelForm):
     first_name = forms.CharField(max_length=30, required=True, help_text="Required. 30 characters or fewer.", widget=forms.TextInput(attrs={"placeholder": "First Name"}))
@@ -41,3 +41,9 @@ class ExtendedProfileForm(forms.ModelForm):
             "job_positions": forms.TextInput(attrs={"placeholder": "Enter your job positions"}),
             "employee_id": forms.TextInput(attrs={"placeholder": "Enter your employee_id"}),
         }
+
+class ProfilePictureForm(forms.ModelForm):
+    profile_picture = forms.ImageField(label="Profile Picture")
+    class Meta:
+        model = Profile
+        fields = ("profile_picture", )

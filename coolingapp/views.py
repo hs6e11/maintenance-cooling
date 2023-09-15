@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from coolingapp.forms import RegisterForm, UserProfileForm, ExtendedProfileForm
+from coolingapp.forms import RegisterForm, UserProfileForm, ExtendedProfileForm, ProfilePictureForm
 from coolingapp.models import CustomUser, Profile
 
 
@@ -86,21 +86,27 @@ def profile(request: HttpRequest):
         try:
             #Will update
             extended_form = ExtendedProfileForm(request.POST, instance=user.profile)
+            profile_picture_form = ProfilePictureForm(request.POST, request.FILES, instance=user.profile)
         except:
             #Will create
             extended_form = ExtendedProfileForm(request.POST)
+            profile_picture_form = ProfilePictureForm(request.POST)
+
             is_new_profile = True
 
-        if form.is_valid() and extended_form.is_valid():
+        if form.is_valid() and extended_form.is_valid() and profile_picture_form.is_valid():
             form.save()
             if is_new_profile:
-                #Create
+                # Create
                 profile = extended_form.save(commit=False)
-                profile.user = user
+                profile.user = user  # Assign the user to the profile
                 profile.save()
+                profile_picture_form.instance = profile  # Assign the profile to the profile picture form's instance
+                profile_picture_form.save()
             else:
-                #Update
+                # Update
                 extended_form.save()
+                profile_picture_form.save()
 
             return HttpResponseRedirect(reverse("coolingapp:profile"))
     
@@ -108,12 +114,15 @@ def profile(request: HttpRequest):
         form = UserProfileForm(instance=user)
         try:
             extended_form = ExtendedProfileForm(instance=user.profile)
+            profile_picture_form = ProfilePictureForm(instance=user.profile)
         except:
             extended_form =  ExtendedProfileForm()
+            profile_picture_form = ProfilePictureForm()
 
     #GET
     context = {
         "form": form,
-        "extended_form": extended_form
+        "extended_form": extended_form,
+        "profile_picture_form": profile_picture_form,
     }
     return render(request, "account/profile.html", context)
