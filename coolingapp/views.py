@@ -6,8 +6,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from coolingapp.forms import RegisterForm, UserProfileForm, ExtendedProfileForm, ProfilePictureForm
 from coolingapp.models import CustomUser, Profile
-from PIL import Image
-from io import BytesIO
 
 
 # Create your views here.
@@ -77,6 +75,52 @@ def logout_view(request):
     return render(request,'index.html')
 
 @login_required
+def maintenance(request):
+    return render(request,"maintenance.html")
+
+def login_view(request):
+    # Check if the user is already authenticated
+    if request.user.is_authenticated:
+        return render(request, 'index.html')  # Redirect to the home page or another appropriate page
+
+    # If the request method is POST, the user submitted the login form
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            # Authenticate the user
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                # Log in the user
+                login(request, user)
+                return render(request, 'index.html')  # Redirect to the home page or another appropriate page after successful login
+    else:
+        form = AuthenticationForm()
+
+    # Render the login page with the login form
+    return render(request, 'registration/login.html', {'form': form})
+
+def register(request):
+    # POST
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return render(request, 'index.html')
+    else:
+        form = RegisterForm()
+
+    context = {"form": form}
+    return render(request, "account/register.html", context)
+
+def logout_view(request):
+    logout(request)
+    return render(request,'index.html')
+
+@login_required
 def profile(request: HttpRequest):
     user = request.user
     #POST
@@ -92,7 +136,6 @@ def profile(request: HttpRequest):
             #Will create
             extended_form = ExtendedProfileForm(request.POST)
             profile_picture_form = ProfilePictureForm(request.POST)
-
             is_new_profile = True
 
         if form.is_valid() and extended_form.is_valid() and profile_picture_form.is_valid():
@@ -103,20 +146,7 @@ def profile(request: HttpRequest):
                 profile.user = user  # Assign the user to the profile
                 profile.save()
                 profile_picture_form.instance = profile  # Assign the profile to the profile picture form's instance
-                
-                # Resize the image before saving it
-                profile_picture = profile_picture_form.save(commit=False)
-                image = Image.open(profile_picture.profile_picture)
-                max_width = 200  # Adjust the desired width
-                max_height = 200  # Adjust the desired height
-                image.thumbnail((max_width, max_height))
-                
-                # Save the resized image
-                image_data = BytesIO()
-                image.save(image_data, format='JPEG')  # Adjust format if needed
-                profile_picture.profile_picture = image_data
-
-                profile_picture.save()
+                profile_picture_form.save()
             else:
                 # Update
                 extended_form.save()

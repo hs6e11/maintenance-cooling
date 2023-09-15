@@ -842,17 +842,27 @@ form svg {
 label[for="id_username"] {
   color: #3989b7;
   font-size: 16px;
-   
 }
 
 label[for="id_password"] {
   color: #3989b7;
   font-size: 16px;
 }
+label[for="id_username"]:hover{
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
 
+label[for="id_password"]:hover{
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
 
 .form-field {
   margin-top: 15px;
+  position: relative;
 }
 
 input[type="text"],
@@ -879,6 +889,7 @@ button[type="submit"] {
   padding: 10px 20px;
   cursor: pointer;
   font-size: 20px;
+  margin-top: 30px;
   text-transform: uppercase;
   width: 100%;
 }
@@ -1135,3 +1146,246 @@ button[type="submit"] {
 }
 
 /* ---------END Loginpage-------- */
+
+/* ---------Registerpage-------- */
+
+.error-message {
+  color: rgb(213, 66, 66);
+  font-size: 16px;
+  font-weight: normal;
+}
+.error-message :hover {
+  color: rgb(255, 255, 255);
+}
+
+label[for="id_username2"] {
+  color: #3989b7;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+label[for="id_email"] {
+  color: #3989b7;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+label[for="id_password1"] {
+  color: #3989b7;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+label[for="id_password2"] {
+  color: #3989b7;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+label[for="id_username2"]:hover{
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
+label[for="id_email"]:hover{
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
+label[for="id_password1"]:hover{
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
+label[for="id_password2"]:hover{
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password1"],
+input[type="password2"] {
+  width: 100%;
+  padding: 10px;
+  margin: 2px;
+  border: 3px solid #93cdff;
+  border-radius: 5px;
+}
+
+input[type="text"]:hover{
+  border: 3px solid #f78e6b;
+}
+
+input[type="email"]:hover{
+  border: 3px solid #f78e6b;
+}
+
+input[type="password"]:hover{
+  border: 3px solid #f78e6b;
+}
+
+
+input[type="text"]:focus,
+input[type="email"]:focus{
+  border-color: #007BFF;
+  border: 5px solid #85d2ff;
+  box-shadow: 0 0 5px #7ac7d2;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    color: #60858a;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder {
+    font-size: 14px;
+    color: #9ec7de;
+}
+
+/* ---------END Registerpage-------- */
+
+/* ---------Profilepage-------- */
+
+label[for="id_first_name"],
+label[for="id_last_name"],
+label[for="id_form.phone"],
+label[for="id_form.agency"],
+label[for="id_form.employee_id"],
+label[for="id_form.job_positions"] {
+  color: #3989b7;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+label[for="id_first_name"]:hover{
+  color: #ffffff;
+}
+label[for="id_last_name"]:hover{
+  color: #ffffff;
+}
+label[for="id_form.phone"]:hover{
+  color: #ffffff;
+}
+label[for="id_form.agency"]:hover{
+  color: #ffffff;
+}
+label[for="id_form.job_positions"]:hover{
+  color: #ffffff;
+}
+label[for="id_form.employee_id"]:hover{
+  color: #ffffff;
+}
+
+
+label[for="profile-picture-input"] {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+label[for="profile-picture-input"]:hover{
+  color: #3b76bf;
+}
+.input_phone{
+  width: 345px;
+}
+
+.input_job_positions{
+  width: 345px;
+}
+
+.input_last_name{
+  width: 345px;
+}
+
+.input_first_name{
+  width: 345px;
+}
+
+.input_employee_id{
+  width: 345px;
+}
+
+.input_agency{
+  width: 345px;
+}
+
+.profileform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 650px;
+  width: 75vw;
+  padding: 1rem 1.5rem;
+  border-radius: 7.5px;
+  background: #ffffff54;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 1px 10px -3px rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
+}
+
+.userprofile{
+  color: #577e9d;
+  font-size: 35px; 
+}
+
+.userprofile:hover{
+  color: #0061b1; 
+}
+
+.formup_pic{
+  margin-top: 20px;
+}
+
+.userpicture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pic_warning {
+  color: #0061b1;
+  margin-top: 10px;
+}
+
+.circular-image {
+  width: 200px; /* Adjust the width and height as needed */
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%; /* This creates the circular shape */
+}
+
+.circular-image img {
+  width: 100%; /* Make sure the image covers the circular container */
+  height: auto; /* Maintain the aspect ratio */
+  display: block; /* Remove any extra spacing or margin */
+}
+
+
+/* canvasfortree */
+
+canvas {
+	display: block;
+	margin: auto;
+	object-fit: contain;
+	max-width: 100vw;
+	max-height: 100vh;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+	body {
+		background: #E5F4FF;
+	}
+}
+
+
+/* ---------END Profilepage-------- */

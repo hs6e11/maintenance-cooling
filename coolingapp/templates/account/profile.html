@@ -15,13 +15,14 @@
             <div class="profilepicture">
                 <label for="profile-picture-input">Profile Picture <i class="fa fa-moon-o" aria-hidden="true"></i></label>
                 <div class="userpicture">
-                    {% if user.profile.profile_picture %}
-                    <img class="imagepreview" id="image-preview" src="{{ user.profile.profile_picture.url }}" alt="Profile Picture" width="200" height="200">
-                    {% else %}
-                    <img class="pic_notyet" src="/static/assets/img/pic_notyet.png" width="200" height="200">
-                    <p class="pic_warning">You haven't selected a profile picture yet.</p>
-                    {% endif %}
-                </div>
+		{% if user.profile.profile_picture %}
+		    <img class="imagepreview" id="image-preview" src="{{ user.profile.profile_picture.url }}" alt="Profile Picture" width="200" height="200">
+		{% else %}
+		    <!-- Display a placeholder image or some text when no profile picture is available -->
+		    <img class="pic_notyet" src="/static/assets/img/pic_notyet.png" width="200" height="200">
+		    <p class="pic_warning">You haven't selected a profile picture yet.</p>
+		{% endif %}
+	      </div>
                 <div class="formup_pic">
                 <input class= "form-control" type="file" name="profile_picture" id="profile-picture-input" accept="image/*" onchange="previewAndResizeImage(this);" />
                 </div>
@@ -356,47 +357,47 @@ class Utils {
 
 <!-- proto preview -->
 <script>
-    function previewAndResizeImage(input) {
-        var preview = document.getElementById('image-preview');
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var img = new Image();
-                img.src = e.target.result;
-                img.onload = function () {
-                    // Define the desired width and height for the preview
-                    var maxWidth = 200; // Adjust this to your preferred size
-                    var maxHeight = 200; // Adjust this to your preferred size
-
-                    // Calculate the new dimensions while maintaining aspect ratio
-                    var width = img.width;
-                    var height = img.height;
-                    if (width > maxWidth || height > maxHeight) {
-                        var aspectRatio = width / height;
-                        if (width > height) {
-                            width = maxWidth;
-                            height = maxWidth / aspectRatio;
-                        } else {
-                            height = maxHeight;
-                            width = maxHeight * aspectRatio;
-                        }
-                    }
-
-                    // Create a canvas to draw the resized image
-                    var canvas = document.createElement('canvas');
-                    canvas.width = width;
-                    canvas.height = height;
-                    var ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, width, height);
-
-                    // Set the preview image source to the resized image
-                    preview.src = canvas.toDataURL('image/jpeg'); // Adjust format if needed
-                };
-            };
-            reader.readAsDataURL(input.files[0]);
-        } else {
-            preview.src = '';
-        }
-    }
-</script>
+	function previewAndResizeImage(input) {
+	    var preview = document.getElementById('image-preview');
+	    if (input.files && input.files[0]) {
+	        var reader = new FileReader();
+	        reader.onload = function (e) {
+		  var img = new Image();
+		  img.src = e.target.result;
+		  img.onload = function () {
+		      // Define the desired width and height for the preview
+		      var maxWidth = 200; // Adjust this to your preferred size
+		      var maxHeight = 200; // Adjust this to your preferred size
+      
+		      // Calculate the new dimensions while maintaining aspect ratio
+		      var width = img.width;
+		      var height = img.height;
+		      if (width > maxWidth || height > maxHeight) {
+			var aspectRatio = width / height;
+			if (width > height) {
+			    width = maxWidth;
+			    height = maxWidth / aspectRatio;
+			} else {
+			    height = maxHeight;
+			    width = maxHeight * aspectRatio;
+			}
+		      }
+      
+		      // Create a canvas to draw the resized image
+		      var canvas = document.createElement('canvas');
+		      canvas.width = width;
+		      canvas.height = height;
+		      var ctx = canvas.getContext('2d');
+		      ctx.drawImage(img, 0, 0, width, height);
+      
+		      // Set the preview image source to the resized image
+		      preview.src = canvas.toDataURL('image/jpeg'); // Adjust format if needed
+		  };
+	        };
+	        reader.readAsDataURL(input.files[0]);
+	    } else {
+	        preview.src = '';
+	    }
+	}
+      </script>
 {% endblock %}
