@@ -16,7 +16,9 @@
                 <label for="profile-picture-input">Profile Picture <i class="fa fa-moon-o" aria-hidden="true"></i></label>
                 <div class="userpicture">
 		{% if user.profile.profile_picture %}
+		<div class="circular-image">
 		    <img class="imagepreview" id="image-preview" src="{{ user.profile.profile_picture.url }}" alt="Profile Picture" width="200" height="200">
+		</div>
 		{% else %}
 		    <!-- Display a placeholder image or some text when no profile picture is available -->
 		    <img class="pic_notyet" src="/static/assets/img/pic_notyet.png" width="200" height="200">
