@@ -71,13 +71,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'coolingapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'coolingapp'
+    
 ]
 
 MIDDLEWARE = [
@@ -190,6 +191,10 @@ AUTH_USER_MODEL = "coolingapp.CustomUser"
 LOGIN_REDIRECT_URL = "index"
 LOGOUT_REDIRECT_URL = "index"
 LOGIN_URL = "login"
+# settings.py
+
+LOGIN_REDIRECT_URL = 'password_change_done'
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
