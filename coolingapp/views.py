@@ -1,3 +1,4 @@
+from django.core.mail import send_mail,EmailMessage
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.urls import reverse, reverse_lazy
@@ -8,6 +9,14 @@ from django.contrib.auth.decorators import login_required
 from coolingapp.forms import RegisterForm, UserProfileForm, ExtendedProfileForm, ProfilePictureForm
 from coolingapp.models import CustomUser, Profile
 from django.views.generic.base import TemplateView
+
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from django.contrib.auth import get_user_model
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from coolingapp.utils.activation_token_generator import activation_token_generator
 
 class CustomPasswordChangeDoneView(TemplateView):
     template_name = 'registration/password_change_done.html'
@@ -90,23 +99,71 @@ def login_view(request):
     return render(request, 'registration/login.html', {'form': form})
 
 
-def register(request):
+def register(request: HttpRequest):
     # POST
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return render(request, 'index.html')
+            #Register User
+            user: CustomUser = form.save(commit=False)
+            user.is_active = False
+            user.save()
+
+            # login(request, user)
+
+            #Build email body HTML
+            context = {
+                "protocol": request.scheme,
+                "host": request.get_host(),
+                "uidb64": urlsafe_base64_encode(force_bytes(user.id)),
+                "token": activation_token_generator.make_token(user)
+            }
+            email_body = render_to_string("activation/activate_email.html", context)
+
+            #Sent email
+            email = EmailMessage(
+                to=[user.email],
+                subject="Activate account",
+                body=email_body
+            )
+
+            email.send()
+
+            #Redirect to thank you
+            return HttpResponseRedirect(reverse("coolingapp:register_thankyou"))
     else:
         form = RegisterForm()
 
     context = {"form": form}
     return render(request, "account/register.html", context)
 
-def logout_view(request):
-    logout(request)
-    return render(request,'index.html')
+
+def register_thankyou(request: HttpRequest):
+    return render(request,"activation/register_thankyou.html")
+
+
+def activate(request: HttpRequest, uidb64: str, token: str ):
+    title = "Activate account successfully"
+    description = "You can now log in !"
+
+    #Decode user id
+    id = urlsafe_base64_decode(uidb64).decode()
+
+    try:
+        user: CustomUser = CustomUser.objects.get(id=id)
+        if not activation_token_generator.check_token(user, token):
+            raise Exception("Check token false")
+        user.is_active = True
+        user.save()
+    except:
+        print("Activate doesn't pass.")
+        title = "You can't activate your account"
+        description = "This link has expired or has already been activated"
+
+    context = {"title": title, "description": description}
+    return render(request,"activation/activate.html", context)
+
+
 
 @login_required
 def profile(request: HttpRequest):
@@ -158,3 +215,39 @@ def profile(request: HttpRequest):
         "profile_picture_form": profile_picture_form,
     }
     return render(request, "account/profile.html", context)
+
+
+def password_reset_confirmation(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = get_user_model().objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, get_user_model().DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        # Render the HTML email template with dynamic data
+        html_message = render_to_string('registration/password_reset_email.html', {
+            'username': user.username,
+            'protocol': settings.WEB_PROTOCAL,
+            'domain': settings.WEB_DOMAIN_NAME,
+            'uid': uidb64,
+            'token': token,
+        })
+
+        # Send the email
+        send_mail(
+            'Password Reset Confirmation',  # Subject
+            'This is a plain text message. Your email client may not support HTML.',  # This will be ignored for HTML emails
+            'from@example.com',
+            [user.email],  # Recipient's email address
+            fail_silently=False,
+            html_message=html_message,  # HTML content
+            content_subtype='html',  # Specify that it's HTML content
+        )
+
+        # Optionally, you can return an HttpResponse or redirect to a confirmation page
+        return HttpResponse("Password reset confirmation email sent.")
+    else:
+        # Handle the case where the user is None or the token is invalid/expired
+        # You can render an error page or redirect to an error view
+        return HttpResponse("Invalid or expired reset link. Please try again.")

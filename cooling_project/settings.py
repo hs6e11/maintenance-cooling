@@ -206,10 +206,13 @@ EMAIL_HOST = 'smtp.gmail.com'  # Replace with your SMTP server address
 EMAIL_PORT = 587  # Use the appropriate port for your SMTP server
 EMAIL_USE_TLS = True  # Use TLS encryption (or EMAIL_USE_SSL = True for SSL)
 EMAIL_HOST_USER = 'lignum.locus@gmail.com'
-EMAIL_HOST_PASSWORD = 'koqyqpsegmheszey'  # Replace with your email password
+EMAIL_HOST_PASSWORD = 'lguldlagimrjagrd'  # Replace with your email password
 
 
 # EAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_FILE_PATH = BASE_DIR / "test_inbox"
+# EMAIL_FILE_PATH = BASE_DIR / "test_inbox"
 PASSWORD_RESET_TIMEOUT = 60
+
+
+# PASSWORD_RESET_EMAIL_TEMPLATE = 'registration/password_reset_email.html'

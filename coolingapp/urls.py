@@ -33,6 +33,8 @@ urlpatterns = [
     path("account/profile", view=views.profile, name="profile"),
     path("registration/login/", view=views.login_view, name="login"),
     path("logout", view=views.logout_view, name="logout"),
+    path("activation/register_thankyou", view=views.register_thankyou, name="register_thankyou"),
+    path("activation/activate/<str:uidb64>/<str:token>", view=views.activate, name="activate"),
 ]
 
 
