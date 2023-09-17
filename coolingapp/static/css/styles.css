@@ -1844,7 +1844,7 @@ label[for="id_new_password2"] {
 
 
 /* ---------END Password_change_done page-------- */
-
+/* ---------Loader-------- */
 .loader {
   position: fixed;
   left: 0px;
@@ -1854,3 +1854,65 @@ label[for="id_new_password2"] {
   z-index: 9999;
   background: url('/static/assets/img/ellipsis.gif') 50% 50% no-repeat;
 }
+/* ---------END Loader-------- */
+
+/* ---------Index/Homepage page-------- */
+
+.temperature {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container_tem {
+  color: #2f6fb4;
+  margin-bottom: 200px;
+}
+
+button {
+  background: transparent;
+  border: none;
+  color: #305b9b;
+  font-size: 50px;
+}
+
+.display-3 {
+  font-size: 70px;
+  align-items: center;
+}
+
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
+.chip {
+  width: 1000px;
+  height: 500px;
+  background: #ffffff3b;
+  backdrop-filter: blur(5px);
+  padding: 50px;
+  position: relative;
+  top: 80px;
+  align-items: center;
+  margin-bottom: 50px;
+  border-radius: 20px;
+}
+
+
+#weather-icon,
+#btnFahrenheit {
+  color: #2d314a;
+}
+
+#description {
+  position: relative;
+  top: -15px;
+  left: 20px;
+  margin-top: 10px;
+}
+
+#otherDetails {
+  margin-top: 30px;
+  color: #2d314a;
+  font-size: 25px;
+}
+/* ---------END Index/Homepage page-------- */
