@@ -52,7 +52,7 @@
                     {{ form.password }}
                     {{ form.password.errors }}
                 </div>
-                <a class="forgotpass" href="#">Forgot your password?</a>
+                <a class="forgotpass" href="{% url 'coolingapp:password_reset' %}">Forgot your password?</a>
                 <button type="submit" class="btn btn-primary">Sign In</button>
             </form>
     </div>

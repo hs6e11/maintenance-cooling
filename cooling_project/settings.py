@@ -31,7 +31,7 @@ env_schema = dict(
     DB_PASSWORD=(str, '1234'),
     DB_HOST=(str, 'localhost'),
     DB_PORT=(str, '5434'),
-    SECRET_KEY=(str, 'django-insecure-h$q$n36sjg@^lyy$-zfe%#f!14)2b7b_#b#&)a-@)_mw^npr$4'),
+    SECRET_KEY=(str, 'django-insecure-h$q$n36sjg@^lyy$-zfe%#f!14)2b7b_#b#&)a-@)_mw^npr$4'),    
     # AUTHEN_SECRET_KEY=(str, 'RL72rg9bPzajnmwP9cB8vrKuJaIN6Iy6N99gncjD8QE='),
     # EMAIL_HOST=(str, 'localhost'),
     # EMAIL_PORT=(str, '1025'),
@@ -190,7 +190,7 @@ AUTH_USER_MODEL = "coolingapp.CustomUser"
 
 LOGIN_REDIRECT_URL = "index"
 LOGOUT_REDIRECT_URL = "index"
-LOGIN_URL = "login"
+LOGIN_URL = "coolingapp:login"
 # settings.py
 
 LOGIN_REDIRECT_URL = 'password_change_done'
@@ -198,3 +198,18 @@ LOGIN_REDIRECT_URL = 'password_change_done'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#Email
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Replace with your SMTP server address
+EMAIL_PORT = 587  # Use the appropriate port for your SMTP server
+EMAIL_USE_TLS = True  # Use TLS encryption (or EMAIL_USE_SSL = True for SSL)
+EMAIL_HOST_USER = 'lignum.locus@gmail.com'
+EMAIL_HOST_PASSWORD = 'koqyqpsegmheszey'  # Replace with your email password
+
+
+# EAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR / "test_inbox"
+PASSWORD_RESET_TIMEOUT = 60
