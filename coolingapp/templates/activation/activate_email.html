@@ -1,49 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Activate account</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f6e8e2;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #ffffff;
-        }
-        h1 {
-            color: #e9431e;
-        }
-        p {
-            font-size: 16px;
-            color: #6c5b58;
-        }
-        .reset-button {
-            background-color: #c0a088;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: inline-block;
-        }
-        .reset-button:hover {
-            background-color: #7b685b;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Activate account</h1>
-        <p>Hello {{ user.username }},</p>
-        <p>You received this email because you subscribed to lignum website.</p>
-        <p>Please click this link to acivate your account.</p>
-        <p><a class="reset-button" href="{{ protocol }}://{{ host }}{% url 'coolingapp:activate' uidb64=uidb64 token=token %}">Activate your account</a></p>
-        <p>Thanks!</p>
-    </div>
-</body>
-</html>
+Activate account
+
+Hello {{ user.username }},
+You received this email because you subscribed to lignum website.
+Please click this link to acivate your account.
+{{ protocol }}://{{ host }}{% url 'coolingapp:activate' uidb64=uidb64 token=token %}
+
+    Thanks!
