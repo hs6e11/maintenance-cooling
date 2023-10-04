@@ -1,9 +1,30 @@
 {% extends "base.html" %}
 
 {% block title %}
-    <title>Home page</title>
+    <title>Dashboard</title>
 {% endblock %}
 
 {% block content %}
-    <h1>Dashborad</h1>
+    <h1>Dashboard</h1>
+
+    <!-- Display forecast results -->
+    <h2>Forecast Results:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>InletTemp</th>
+                <th>OutletTemp</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for forecast in forecasts %}
+            <tr>
+                <td>{{ forecast.InletTemp }}</td>
+                <td>{{ forecast.OutletTemp }}</td>
+                <td>{{ forecast.Status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
 {% endblock %}

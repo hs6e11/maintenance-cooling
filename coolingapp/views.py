@@ -6,8 +6,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView,  PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from coolingapp.forms import RegisterForm, UserProfileForm, ExtendedProfileForm, ProfilePictureForm
-from coolingapp.models import CustomUser, Profile
+from coolingapp.forms import RegisterForm, UserProfileForm, ExtendedProfileForm, ProfilePictureForm, CoolingForecastForm
+from coolingapp.models import CustomUser, Profile, CoolingForecast
 from django.views.generic.base import TemplateView
 
 from django.template.loader import render_to_string
@@ -17,6 +17,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from coolingapp.utils.activation_token_generator import activation_token_generator
+from django.contrib import messages
 
 class CustomPasswordChangeDoneView(TemplateView):
     template_name = 'registration/password_change_done.html'
@@ -55,7 +56,12 @@ def about(request):
 
 @login_required
 def dashboard(request):
-    return render(request,"dashboard.html")
+    forecasts = CoolingForecast.objects.all()
+    context = {
+        'forecasts': forecasts
+    }
+    return render(request, "dashboard.html", context)
+
 
 @login_required
 def workpermit(request):
@@ -251,3 +257,23 @@ def password_reset_confirmation(request, uidb64, token):
         # Handle the case where the user is None or the token is invalid/expired
         # You can render an error page or redirect to an error view
         return HttpResponse("Invalid or expired reset link. Please try again.")
+
+@login_required
+def cooling_forecast(request: HttpRequest):
+    if request.method == 'POST':
+        form = CoolingForecastForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Forecast data saved successfully!")
+            return HttpResponseRedirect(reverse("coolingapp:dashboard"))
+    else:
+        form = CoolingForecastForm()
+
+    # Retrieve all saved CoolingForecast objects
+    forecasts = CoolingForecast.objects.all()
+
+    context = {
+        'form': form,
+        'forecasts': forecasts
+    }
+    return render(request, 'cooling_forecast.html', context)

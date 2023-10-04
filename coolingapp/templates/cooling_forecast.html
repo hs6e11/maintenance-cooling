@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Cooling Forecast</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Cooling Forecast</h1>
+
+    <!-- Display form for new forecast -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Forecast</button>
+    </form>
+{% endblock %}

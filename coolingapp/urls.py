@@ -25,7 +25,7 @@ urlpatterns = [
     path('password_change_done/', CustomPasswordChangeDoneView.as_view(), name='password_change_done'),
     path('', view=views.index, name="index"),
     path("about", view=views.about, name="about"),
-    path("dashboard", view=views.dashboard, name="dashboard"),
+    path("dashboard/", view=views.dashboard, name="dashboard"),
     path("workpermit", view=views.workpermit, name="workpermit"),
     path("test", view=views.test, name="test"),
     path('maintenance', view=views.maintenance, name="maintenance"),
@@ -35,6 +35,8 @@ urlpatterns = [
     path("logout", view=views.logout_view, name="logout"),
     path("activation/register_thankyou", view=views.register_thankyou, name="register_thankyou"),
     path("activation/activate/<str:uidb64>/<str:token>", view=views.activate, name="activate"),
+    path('cooling_forecast/', views.cooling_forecast, name='cooling_forecast'),
+
 ]
 
 

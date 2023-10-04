@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from coolingapp.models import CustomUser, Profile  # Import Profile model
+from coolingapp.models import CustomUser, Profile, CoolingForecast  # Import Profile model
 from django import forms
 
 class RegisterForm(UserCreationForm):
@@ -47,3 +47,11 @@ class ProfilePictureForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ("profile_picture", )
+
+class CoolingForecastForm(forms.ModelForm):
+    class Meta:
+        model = CoolingForecast
+        fields = [
+            'InletTemp', 'OutletTemp', 'OutdoorWetBulb', 'OutdoorAirTemp', 
+            'OutdoorAirHumidity', 'Kw_cooling', 'Kw_Chiller'
+        ]

@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from joblib import load
+from datetime import datetime
+from django.utils import timezone
 
 # Create your models here.
 
@@ -18,6 +20,7 @@ class Profile(models.Model):
 model_random_forest = load('coolingapp/model_ml/model_random_forest_cooling.pkl')
 
 class CoolingForecast(models.Model):
+    recorded_at = models.DateTimeField(default=timezone.now)
     InletTemp = models.FloatField()
     OutletTemp = models.FloatField()
     OutdoorWetBulb = models.FloatField()
