@@ -97,10 +97,10 @@ font-family: 'Itim', cursive;
   text-decoration: none;
   transition: color 0.2s;
   font-size: 25px;
-  margin-left: auto; /* Push the username link to the right to center-align it */
-  margin-right: auto; /* Push the username link to the left to center-align it */
-  display: block; /* Make it a block-level element to center-align */
-  text-align: center; /* Center the text horizontally */
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
 }
 
 .username:hover {
@@ -123,22 +123,22 @@ font-family: 'Itim', cursive;
 
 /* Style for the toggler button */
 .navbar-toggler {
-  background-color: #ffffff; /* Change to your desired color */
-  border: none; /* Remove the border */
+  background-color: #ffffff; 
+  border: none;
   padding: 0.25rem 0.5rem;
   cursor: pointer;
 }
 
 /* Style for the offcanvas header */
 .offcanvas-header {
-  border-bottom: none; /* Remove the bottom border */
-  border-radius: 50px; /* Add rounded corners to the top */
+  border-bottom: none;
+  border-radius: 50px;
 }
 
 /* Style for the offcanvas body */
 .offcanvas-body {
-  border-radius: 0 0 10px 10px; /* Add rounded corners to the bottom */
-  overflow: hidden; /* Hide overflowing content */
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
 }
 
 
@@ -202,7 +202,6 @@ font-family: 'Itim', cursive;
 {
   position: absolute;
   border-radius: 50%;
-  /*Make sure they are in the middle*/
   left: 50%;
   transform: translateX(-50%);
 }
@@ -227,7 +226,6 @@ font-family: 'Itim', cursive;
 
 #stars
 {
-  /*Has to be more than the amount of layers*/
   perspective: 15px;
 	
   width: 100%;
@@ -249,7 +247,6 @@ font-family: 'Itim', cursive;
   position: absolute;
   width: 200px;
   height: 200px;
-  /*This is to make sure the upper-Z layer's don't shift downward*/
   transform-origin: 100px 0;
 }
 
@@ -1350,18 +1347,18 @@ label[for="profile-picture-input"]:hover{
 
 
 .circular-image {
-  width: 200px; /* Adjust the width as needed */
-  height: 200px; /* Adjust the height as needed */
+  width: 200px;
+  height: 200px;
   overflow: hidden;
-  border-radius: 50%; /* Makes the image circular */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Optional: Add a shadow for a nice effect */
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Style the image inside the circular container */
 .circular-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure the image covers the circular container */
+  object-fit: cover;
 }
 
 /* canvasfortree */
