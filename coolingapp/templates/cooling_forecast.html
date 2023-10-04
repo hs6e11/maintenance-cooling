@@ -5,12 +5,18 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Cooling Forecast</h1>
-
-    <!-- Display form for new forecast -->
-    <form method="post">
+<main>
+<section class="content_coolingforecast">
+  <div class="content_coolingform">
+    <form class="coolingform" method="post">
+      <h1>Cooling Tower Forecast</h1>
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save Forecast</button>
+      <p>
+        <button type="submit" class="btn btn-primary">Prediction <i class="fa fa-rocket" aria-hidden="true"></i></button>
+      </p> 
     </form>
+  </div>
+</section>
+</main>
 {% endblock %}

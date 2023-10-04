@@ -5,26 +5,41 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Dashboard</h1>
-
-    <!-- Display forecast results -->
-    <h2>Forecast Results:</h2>
+    <h1 class="Dashboard">Cooling tower forecast results</h1>  
+    <div class="table_cooling">
     <table>
         <thead>
             <tr>
-                <th>InletTemp</th>
-                <th>OutletTemp</th>
+                <th>Date</th>
+                <th>Inlet Temp</th>
+                <th>Outlet Temp</th>
+                <th>Outdoor WetBulb</th>
+                <th>Outdoor AirTemp</th>
+                <th>Outdoor AirHumidity</th>
+                <th>Kw cooling</th>
+                <th>Kw Chiller</th>
+                <th>Design cooling</th>
+                <th>Diff Outlet&Wetbulb</th>
                 <th>Status</th>
             </tr>
         </thead>
         <tbody>
             {% for forecast in forecasts %}
             <tr>
+                <td>{{ forecast.recorded_at }}</td>
                 <td>{{ forecast.InletTemp }}</td>
                 <td>{{ forecast.OutletTemp }}</td>
+                <td>{{ forecast.OutdoorWetBulb }}</td>
+                <td>{{ forecast.OutdoorAirTemp }}</td>
+                <td>{{ forecast.OutdoorAirHumidity }}</td>
+                <td>{{ forecast.Kw_cooling }}</td>
+                <td>{{ forecast.Kw_Chiller }}</td>
+                <td>{{ forecast.Design_cooling }}</td>
+                <td>{{ forecast.Diff_Outlet_Wetbulb }}</td>
                 <td>{{ forecast.Status }}</td>
             </tr>
             {% endfor %}
         </tbody>
-    </table>    
+    </table>  
+</div>  
 {% endblock %}

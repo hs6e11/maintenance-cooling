@@ -2,6 +2,9 @@
 
 body {
 font-family: 'Itim', cursive;
+margin: 0;
+padding: 0;
+width: 100%;
 }
 
 /* ------Navbar------- */
@@ -1913,3 +1916,109 @@ button {
   font-size: 25px;
 }
 /* ---------END Index/Homepage page-------- */
+
+/* ---------Dashboard page-------- */
+
+.Dashboard {
+  text-align: center;
+  font-size: 2.5em;
+  color: #3779cf;
+  padding: 20px 0;
+  border-bottom: 3px solid #68e8ff;
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f55b;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  /* Adding a hover effect for interactivity */
+  &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+table {
+  width: 110%;
+  border-collapse: collapse;
+  margin-left: -50px;
+  margin-bottom: 50px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #5a6b8e;
+  font-size: 16px;
+}
+
+/* th:first-child, td:first-child {
+  border-left: 1px solid #5a6b8e;;
+}
+th:last-child, td:last-child {
+  border-right: 1px solid #5a6b8e;
+} */
+
+th {
+  background-color: #3779cf;
+  color: white;
+}
+
+th:hover {
+  background-color: #8fd4ff;
+  color: #006ec2;
+}
+
+tr:hover {
+  background-color: #f5f5f55b;
+  color: #006ec2;
+}
+
+.table_cooling {
+  text-align: center;
+}
+
+/* ---------End Dashboard page-------- */
+
+/* ---------Cooling Forecast page-------- */
+
+.cooling-input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+  padding: 10px;
+  border: 2px solid #68e8ff;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: -30px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.cooling-input:focus {
+  border-color: #3779cf;
+  box-shadow: 0 2px 6px rgba(55, 121, 207, 0.3);
+}
+
+
+.content_coolingform {
+  text-align: left;
+  font-size: 20px;
+}
+
+.coolingform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  width: 75vw;
+  padding: 1rem 1.5rem;
+  border-radius: 7.5px;
+  background: #ffffff54;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 1px 10px -3px rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
+}

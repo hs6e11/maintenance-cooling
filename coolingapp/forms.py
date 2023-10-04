@@ -55,3 +55,12 @@ class CoolingForecastForm(forms.ModelForm):
             'InletTemp', 'OutletTemp', 'OutdoorWetBulb', 'OutdoorAirTemp', 
             'OutdoorAirHumidity', 'Kw_cooling', 'Kw_Chiller'
         ]
+        widgets = {
+            'InletTemp': forms.NumberInput(attrs={'placeholder': 'Enter Inlet Temperature', 'class': 'cooling-input'}),
+            'OutletTemp': forms.NumberInput(attrs={'placeholder': 'Enter Outlet Temperature', 'class': 'cooling-input'}),
+            'OutdoorWetBulb': forms.NumberInput(attrs={'placeholder': 'Enter Outdoor Wet Bulb', 'class': 'cooling-input'}),
+            'OutdoorAirTemp': forms.NumberInput(attrs={'placeholder': 'Enter Outdoor Air Temperature', 'class': 'cooling-input'}),
+            'OutdoorAirHumidity': forms.NumberInput(attrs={'placeholder': 'Enter Outdoor Air Humidity', 'class': 'cooling-input'}),
+            'Kw_cooling': forms.NumberInput(attrs={'placeholder': 'Enter Kw Cooling', 'class': 'cooling-input'}),
+            'Kw_Chiller': forms.NumberInput(attrs={'placeholder': 'Enter Kw Chiller', 'class': 'cooling-input'}),
+        }
