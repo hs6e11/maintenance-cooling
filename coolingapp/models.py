@@ -3,6 +3,9 @@ from django.db import models
 from joblib import load
 from datetime import datetime
 from django.utils import timezone
+from linebot import LineBotApi
+from linebot.models import TextSendMessage
+from linebot.exceptions import LineBotApiError
 
 # Create your models here.
 
@@ -18,6 +21,11 @@ class Profile(models.Model):
     user = models.OneToOneField("coolingapp.CustomUser", on_delete=models.CASCADE)
 
 model_random_forest = load('coolingapp/model_ml/model_random_forest_cooling.pkl')
+
+LINE_CHANNEL_ACCESS_TOKEN = 'xLnD7d+Lc9/Qq0uJoiF7F/rzClvuZIFCcByie0pNd12qzmNPSiv89AiAtEuSB4sLvn4bKRKAlFvEZjCcDcjHJv9nMCa6beIE+Ehzn5A6NGWYmxkRB0KquHfTS2YkLAOqalYDKRGld8JJ5nzpGCMWzQdB04t89/1O/w1cDnyilFU='
+LINE_USER_ID = 'U83f4c214d510392261bd36ffe921a611'
+
+line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 
 class CoolingForecast(models.Model):
     recorded_at = models.DateTimeField(default=timezone.now)
@@ -111,7 +119,12 @@ class CoolingForecast(models.Model):
         else:
             return 3
 
-    
+    def notify_line(self, message):
+        try:
+            line_bot_api.push_message(LINE_USER_ID, TextSendMessage(text=message))
+        except LineBotApiError as e:
+            print(f"Failed to send message: {e}")
+
     def predict_status(self):
         # Compute Design_cooling and Diff_Outlet_Wetbulb
         self.Design_cooling = self.InletTemp - self.OutletTemp
@@ -135,6 +148,9 @@ class CoolingForecast(models.Model):
         
         self.Status = forecast_result[0]
         print(f"Status before save: {self.Status}")
+    
+        if self.Status == 1:
+            self.notify_line('The forecast status is 1! Please check the cooling tower.')
 
     def save(self, *args, **kwargs):
         # Step 3 : Forecasting
@@ -144,3 +160,4 @@ class CoolingForecast(models.Model):
         # Call the parent class's save method
         super().save(*args, **kwargs)
 
+    

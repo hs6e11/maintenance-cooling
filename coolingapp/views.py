@@ -277,3 +277,6 @@ def cooling_forecast(request: HttpRequest):
         'forecasts': forecasts
     }
     return render(request, 'cooling_forecast.html', context)
+
+def calendar(request):
+    return render(request,"calendar.html")

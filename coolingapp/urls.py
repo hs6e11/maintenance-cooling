@@ -36,6 +36,7 @@ urlpatterns = [
     path("activation/register_thankyou", view=views.register_thankyou, name="register_thankyou"),
     path("activation/activate/<str:uidb64>/<str:token>", view=views.activate, name="activate"),
     path('cooling_forecast/', views.cooling_forecast, name='cooling_forecast'),
+    path("calendar", view=views.calendar, name="calendar"),
 
 ]
 

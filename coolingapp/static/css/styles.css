@@ -1999,7 +1999,7 @@ tr:hover {
 }
 
 .cooling-input:focus {
-  border-color: #3779cf;
+  border-color: #ffc144;
   box-shadow: 0 2px 6px rgba(55, 121, 207, 0.3);
 }
 
