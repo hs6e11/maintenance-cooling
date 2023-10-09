@@ -1983,6 +1983,12 @@ tr:hover {
 /* ---------End Dashboard page-------- */
 
 /* ---------Cooling Forecast page-------- */
+.cooling_title{
+  color: #235781;
+}
+.cooling_title:hover {
+  color: #ffffff;
+}
 
 .cooling-input {
   display: block;
@@ -2021,6 +2027,17 @@ tr:hover {
   backdrop-filter: blur(5px);
   box-shadow: 0 1px 10px -3px rgba(0, 0, 0, 0.2);
   margin-bottom: 50px;
+}
+
+label[for="id_cooling_input"]{
+  color: #3989b7;
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+label[for="id_cooling_input"]:hover{
+  color: #ffffff;
 }
 
 /* ---------End Cooling Forecast page-------- */
@@ -2153,3 +2170,11 @@ label[for="id_end_time"]:hover{
   width: 300px;
 }
 
+.title_event{
+  color: #235781;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+.title_event:hover {
+  color: #ffffff;
+}

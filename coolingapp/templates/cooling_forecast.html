@@ -9,9 +9,36 @@
 <section class="content_coolingforecast">
   <div class="content_coolingform">
     <form class="coolingform" method="post">
-      <h1>Cooling Tower Forecast</h1>
-        {% csrf_token %}
-        {{ form.as_p }}
+      {% csrf_token %}
+      <h1 class="cooling_title" >Cooling Tower Forecast</h1>
+      <div class="form-field">
+        <label for="id_cooling_input">InletTemp <i class="fa fa-thermometer-empty" aria-hidden="true"></i></label>
+        <div class="cooling_input">{{ form.InletTemp }}</div>
+      </div>
+      <div class="form-field">
+        <label for="id_cooling_input">OutletTemp <i class="fa fa-thermometer-empty" aria-hidden="true"></i></label>
+        <div class="cooling_input">{{ form.OutletTemp }}</div>
+      </div>
+      <div class="form-field">
+        <label for="id_cooling_input">OutdoorWetBulb <i class="fa fa-snowflake-o" aria-hidden="true"></i></label>
+        <div class="cooling_input">{{ form.OutdoorWetBulb }}</div>
+      </div>
+      <div class="form-field">
+        <label for="id_cooling_input">OutdoorAirTemp <i class="fa fa-sun-o" aria-hidden="true"></i></label>
+        <div class="cooling_input">{{ form.OutdoorAirTemp }}</div>
+      </div>
+      <div class="form-field">
+        <label for="id_cooling_input">OutdoorAirHumidity <i class="fa fa-thermometer-three-quarters" aria-hidden="true"></i></label>
+        <div class="cooling_input">{{ form.OutdoorAirHumidity }}</div>
+      </div>
+      <div class="form-field">
+        <label for="id_cooling_input">Kw Cooling Tower <i class="fa fa-bolt" aria-hidden="true"></i></label>
+        <div class="cooling_input">{{ form.Kw_cooling }}</div>
+      </div>
+      <div class="form-field">
+        <label for="id_cooling_input">Kw Chiller <i class="fa fa-bolt" aria-hidden="true"></i></label>
+        <div class="cooling_input">{{ form.Kw_Chiller }}</div>
+      </div>
       <p>
         <button type="submit" class="btn btn-primary">Prediction <i class="fa fa-rocket" aria-hidden="true"></i></button>
       </p> 
