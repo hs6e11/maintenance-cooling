@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from coolingapp.models import CustomUser, Profile, CoolingForecast  # Import Profile model
+from coolingapp.models import CustomUser, Profile, CoolingForecast, Event
 from django import forms
 
 class RegisterForm(UserCreationForm):
@@ -64,3 +64,27 @@ class CoolingForecastForm(forms.ModelForm):
             'Kw_cooling': forms.NumberInput(attrs={'placeholder': 'Enter Kw Cooling', 'class': 'cooling-input'}),
             'Kw_Chiller': forms.NumberInput(attrs={'placeholder': 'Enter Kw Chiller', 'class': 'cooling-input'}),
         }
+
+class EventForm(forms.ModelForm):
+    
+    title = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'Title'})
+    )
+    
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={'placeholder': 'Description'}),
+        required=False
+    )
+    
+    start_time = forms.DateTimeField(
+    widget=forms.TextInput(attrs={'class': 'datetimepicker', 'placeholder': 'Select start time', 'type': 'text'}),
+    )
+
+    end_time = forms.DateTimeField(
+        widget=forms.TextInput(attrs={'class': 'datetimepicker', 'placeholder': 'Select end time', 'type': 'text'}),
+        required=False
+    )
+    
+    class Meta:
+        model = Event
+        fields = ['title', 'description', 'start_time', 'end_time']

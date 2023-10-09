@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="events-container">
+    {% for event in events %}
+        <div class="event-item">
+            <h3 class="event-title">{{ event.title }}</h3>
+            <p class="event-description">{{ event.description }}</p>
+            <div class="event-date-time">
+                <span class="event-start-time">{{ event.start_time }}</span> -
+                <span class="event-end-time">{{ event.end_time }}</span>
+            </div>
+            <div class="event-actions">
+                <a href="{% url 'coolingapp:event_edit' event.id %}" class="event-edit-btn">Edit</a>
+                <a href="{% url 'coolingapp:event_delete' event.id %}" class="event-delete-btn">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

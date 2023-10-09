@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+<section class="content-section content-section-single">
+<div class="content-container">
+<div class="form-container">
+    <form method="post" class="event-form">
+        {% csrf_token %}
+        <div class="form-field">
+            <label for="id_event_title">Title <i class="fa fa-book" aria-hidden="true"></i></label>
+            <div class="input_event_title">{{ form.title }}</div>
+        </div>
+        <div class="form-field">
+            <label for="id_event_description">Description <i class="fa fa-pencil" aria-hidden="true"></i></label>
+            <div class="input_event_description">{{ form.description }}</div>
+        </div>
+        <div class="form-field">
+            <label for="id_start_time">Start Event <i class="fa fa-calendar-o" aria-hidden="true"></i></label>
+            <div class="datetimepicker">{{ form.start_time }}</div>
+        </div>
+        <div class="form-field">
+            <label for="id_end_time">End Event <i class="fa fa-calendar-o" aria-hidden="true"></i></label>
+            <div class="datetimepicker">{{ form.end_time }}</div>
+        </div>        
+        <div class="form-actions">
+            <button type="submit" class="submit-btn">Save</button>
+        </div>
+    </form>
+</div>
+</div>
+</section>
+</main>
+<script>
+    $(document).ready(function(){
+        $('#id_start_time').datetimepicker({
+            format:'Y-m-d H:i',
+        });
+        
+        $('#id_end_time').datetimepicker({
+            format:'Y-m-d H:i',
+        });
+    });
+</script>
+
+
+{% endblock %}

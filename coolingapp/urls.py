@@ -11,6 +11,7 @@ from coolingapp.views import (
 )
 from django.conf import settings
 from django.conf.urls.static import static
+from coolingapp.views import EventListView, EventCreateView, EventUpdateView, EventDeleteView
 
 app_name = 'coolingapp'
 
@@ -36,7 +37,10 @@ urlpatterns = [
     path("activation/register_thankyou", view=views.register_thankyou, name="register_thankyou"),
     path("activation/activate/<str:uidb64>/<str:token>", view=views.activate, name="activate"),
     path('cooling_forecast/', views.cooling_forecast, name='cooling_forecast'),
-    path("calendar", view=views.calendar, name="calendar"),
+    path('events/', EventListView.as_view(), name='event_list'),
+    path('events/create/', EventCreateView.as_view(), name='event_form'),
+    path('events/<int:pk>/edit/', EventUpdateView.as_view(), name='event_edit'),
+    path('events/<int:pk>/delete/', EventDeleteView.as_view(), name='event_delete'),
 
 ]
 

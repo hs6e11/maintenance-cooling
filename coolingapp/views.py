@@ -6,9 +6,11 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView,  PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from coolingapp.forms import RegisterForm, UserProfileForm, ExtendedProfileForm, ProfilePictureForm, CoolingForecastForm
-from coolingapp.models import CustomUser, Profile, CoolingForecast
+from coolingapp.forms import RegisterForm, UserProfileForm, ExtendedProfileForm, ProfilePictureForm, CoolingForecastForm, EventForm
+from coolingapp.models import CustomUser, Profile, CoolingForecast, Event
 from django.views.generic.base import TemplateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.utils.decorators import method_decorator
 
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
@@ -18,6 +20,9 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from coolingapp.utils.activation_token_generator import activation_token_generator
 from django.contrib import messages
+from django.http import JsonResponse
+from datetime import datetime
+from django.utils import timezone
 
 class CustomPasswordChangeDoneView(TemplateView):
     template_name = 'registration/password_change_done.html'
@@ -278,5 +283,47 @@ def cooling_forecast(request: HttpRequest):
     }
     return render(request, 'cooling_forecast.html', context)
 
-def calendar(request):
-    return render(request,"calendar.html")
+@method_decorator(login_required, name='dispatch')
+class EventListView(ListView):
+    model = Event
+    template_name = 'events/event_list.html'
+    context_object_name = 'events'
+
+    def get_queryset(self):
+        return Event.objects.filter(user=self.request.user)
+
+class EventCreateView(CreateView):
+    model = Event
+    template_name = 'events/event_form.html'
+    fields = ['title', 'description', 'start_time', 'end_time']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()  # Explicitly save the form
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('coolingapp:event_list')  # Adjust the namespace and URL name as per your urls.py
+
+
+class EventUpdateView(UpdateView):
+    model = Event
+    template_name = 'events/event_form.html'
+    fields = ['title', 'description', 'start_time', 'end_time']
+
+    def get_queryset(self):
+        return Event.objects.filter(user=self.request.user)
+
+    def get_success_url(self):
+        return reverse('coolingapp:event_list')  # Adjust the namespace and URL name as per your urls.py
+
+
+class EventDeleteView(DeleteView):
+    model = Event
+    template_name = 'events/event_confirm_delete.html'
+
+    def get_queryset(self):
+        return Event.objects.filter(user=self.request.user)
+
+    def get_success_url(self):
+        return reverse('coolingapp:event_list')  # Adjust the namespace and URL name as per your urls.py

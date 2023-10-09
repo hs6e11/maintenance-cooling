@@ -1,5 +1,18 @@
 {
   "dependencies": {
-    "bootstrap": "^5.3.1"
-  }
+    "@fullcalendar/core": "^6.1.9",
+    "bootstrap": "^5.3.1",
+    "fullcalendar": "^6.1.9",
+    "fullcalendar-scheduler": "^6.1.9"
+  },
+  "name": "cooling_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
