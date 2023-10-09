@@ -2,8 +2,9 @@
 
 {% block content %}
 <div class="events-container">
-    {% for event in events %}
     <p class="title_event"> Event List : {{ user.username }}</p>
+    {% for event in events %}
+
         <div class="event-item">
             <h3 class="event-title">{{ event.title }}</h3>
             <p class="event-description">{{ event.description }}</p>
@@ -16,24 +17,24 @@
                 <a href="{% url 'coolingapp:event_delete' event.id %}" class="event-delete-btn">Delete</a>
             </div>
         </div>
-        <div class="dog_container">
-            <div class="dog">
-                      <div class="dog-head">
-                                <div class="dog-ears ears-left"></div>
-                                <div class="dog-ears ears-right"></div>
-                                <div class="dog-eyes"></div>
-                                <div class="dog-mouth">
-                                          <div class="dog-nose"></div>
-                                          <div class="dog-tongue"></div>
-                                </div>
-                      </div>
-                      <div class="dog-tail"></div>
-                      <div class="dog-body">
-                                <div class="dog-foot"></div>
-                      </div>
-                      <div class="ball"></div>
-            </div>
-  </div>
     {% endfor %}
+</div>
+<div class="dog_container">
+    <div class="dog">
+              <div class="dog-head">
+                        <div class="dog-ears ears-left"></div>
+                        <div class="dog-ears ears-right"></div>
+                        <div class="dog-eyes"></div>
+                        <div class="dog-mouth">
+                                  <div class="dog-nose"></div>
+                                  <div class="dog-tongue"></div>
+                        </div>
+              </div>
+              <div class="dog-tail"></div>
+              <div class="dog-body">
+                        <div class="dog-foot"></div>
+              </div>
+              <div class="ball"></div>
+    </div>
 </div>
 {% endblock %}
