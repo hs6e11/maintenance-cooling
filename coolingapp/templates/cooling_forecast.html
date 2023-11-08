@@ -12,6 +12,10 @@
       {% csrf_token %}
       <h1 class="cooling_title" >Cooling Tower Forecast</h1>
       <div class="form-field">
+        <label for="labelidcooling" class="labelidcooling">ID Cooling Tower</label>
+        <div class="idcooling">{{ form.cooling_machine_number }}</div>
+      </div>
+      <div class="form-field">
         <label for="id_cooling_input">InletTemp <i class="fa fa-thermometer-empty" aria-hidden="true"></i></label>
         <div class="cooling_input">{{ form.InletTemp }}</div>
       </div>
@@ -43,6 +47,10 @@
         <button type="submit" class="btn btn-primary">Prediction <i class="fa fa-rocket" aria-hidden="true"></i></button>
       </p> 
     </form>
+  </div>
+  <div class="content_right_side">
+    <img src="/static/assets/img/new_logo2.png" style="max-width: 300px;">
+    <img src="/static/assets/img/ctimg.jpg" style="max-width: 550px;">
   </div>
 </section>
 </main>

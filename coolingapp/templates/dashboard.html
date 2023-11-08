@@ -6,11 +6,14 @@
 
 {% block content %}
     <h1 class="Dashboard">Cooling tower forecast results</h1>  
+    {% for machine_id, machine_forecasts in grouped_forecasts.items %}
+    <h2 class="cooling_title">Cooling Machine ID: {{ machine_id }}</h2>
     <div class="table_cooling">
     <table>
         <thead>
             <tr>
                 <th>Date</th>
+                <th>ID</th>
                 <th>Inlet Temp</th>
                 <th>Outlet Temp</th>
                 <th>Outdoor WetBulb</th>
@@ -18,15 +21,16 @@
                 <th>Outdoor AirHumidity</th>
                 <th>Kw cooling</th>
                 <th>Kw Chiller</th>
-                <th>Design cooling</th>
-                <th>Diff Outlet&Wetbulb</th>
+                <th>Delta_T</th>
+                <th>Approach_Temperature</th>
                 <th>Status</th>
             </tr>
         </thead>
         <tbody>
-            {% for forecast in forecasts %}
+            {% for forecast in machine_forecasts %}
             <tr>
                 <td>{{ forecast.recorded_at }}</td>
+                <td>{{ forecast.cooling_machine_number }}</td>
                 <td>{{ forecast.InletTemp }}</td>
                 <td>{{ forecast.OutletTemp }}</td>
                 <td>{{ forecast.OutdoorWetBulb }}</td>
@@ -34,12 +38,18 @@
                 <td>{{ forecast.OutdoorAirHumidity }}</td>
                 <td>{{ forecast.Kw_cooling }}</td>
                 <td>{{ forecast.Kw_Chiller }}</td>
-                <td>{{ forecast.Design_cooling }}</td>
-                <td>{{ forecast.Diff_Outlet_Wetbulb }}</td>
+                <td>{{ forecast.Delta_T }}</td>
+                <td>{{ forecast.Approach_Temperature }}</td>
                 <td>{{ forecast.Status }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>  
-</div>  
+</div>
+{% endfor %}
+
+{% if not grouped_forecasts %}
+    <p class="cooling_title">No forecast data available.</p]>
+{% endif %}
+
 {% endblock %}

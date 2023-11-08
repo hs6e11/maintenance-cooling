@@ -29,6 +29,7 @@ line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 
 class CoolingForecast(models.Model):
     recorded_at = models.DateTimeField(default=timezone.now)
+    cooling_machine_number = models.CharField(max_length=100, blank=True, null=True)
     InletTemp = models.FloatField()
     OutletTemp = models.FloatField()
     OutdoorWetBulb = models.FloatField()
@@ -36,10 +37,43 @@ class CoolingForecast(models.Model):
     OutdoorAirHumidity = models.FloatField()
     Kw_cooling = models.FloatField()
     Kw_Chiller = models.FloatField()
-    Design_cooling = models.FloatField(null=True, blank=True)
-    Diff_Outlet_Wetbulb = models.FloatField(null=True, blank=True)
+    Delta_T = models.FloatField(null=True, blank=True)
+    Approach_Temperature = models.FloatField(null=True, blank=True)
     Status = models.IntegerField(null=True, blank=True)
 
+    @property
+    def year(self):
+        return self.recorded_at.year
+
+    @property
+    def month(self):
+        return self.recorded_at.month
+
+    @property
+    def day(self):
+        return self.recorded_at.day
+
+    @property
+    def hour(self):
+        return self.recorded_at.hour
+
+    @property
+    def minute(self):
+        return self.recorded_at.minute
+
+    @property
+    def converted_Minute(self):
+        if 1 <= self.minute <= 15:
+            return 1
+        elif 16 <= self.minute <= 30:
+            return 2
+        elif 31 <= self.minute <= 45:
+            return 3
+        elif 46 <= self.minute <= 60:
+            return 4
+        return None
+
+    
     @property
     def converted_InletTemp(self):
         if self.InletTemp < 95:
@@ -102,19 +136,19 @@ class CoolingForecast(models.Model):
             return 2
 
     @property
-    def converted_Design_cooling(self):
-        if self.Design_cooling < 7:
+    def converted_Delta_T(self):
+        if self.Delta_T < 7:
             return 1
-        elif 7 <= self.Design_cooling < 10:
+        elif 7 <= self.Delta_T < 10:
             return 2
         else:
             return 3
 
     @property
-    def converted_Diff_Outlet_Wetbulb(self):
-        if self.Diff_Outlet_Wetbulb < 0:
+    def converted_Approach_Temperature(self):
+        if self.Approach_Temperature < 0:
             return 1
-        elif 0 <= self.Diff_Outlet_Wetbulb < 7:
+        elif 0 <= self.Approach_Temperature < 7:
             return 2
         else:
             return 3
@@ -126,12 +160,17 @@ class CoolingForecast(models.Model):
             print(f"Failed to send message: {e}")
 
     def predict_status(self):
-        # Compute Design_cooling and Diff_Outlet_Wetbulb
-        self.Design_cooling = self.InletTemp - self.OutletTemp
-        self.Diff_Outlet_Wetbulb = self.OutletTemp - self.OutdoorWetBulb
+        # Compute Delta_T and Approach_Temperature
+        self.Delta_T = self.InletTemp - self.OutletTemp
+        self.Approach_Temperature = self.OutletTemp - self.OutdoorWetBulb
 
         # Prepare data for prediction using the converted properties
         data_for_prediction = [[
+            self.year, 
+            self.month, 
+            self.day, 
+            self.hour, 
+            self.converted_Minute,
             self.converted_InletTemp, 
             self.converted_OutletTemp, 
             self.converted_OutdoorWetBulb, 
@@ -139,8 +178,8 @@ class CoolingForecast(models.Model):
             self.converted_OutdoorAirHumidity, 
             self.converted_Kw_cooling, 
             self.converted_Kw_Chiller, 
-            self.converted_Design_cooling, 
-            self.converted_Diff_Outlet_Wetbulb
+            self.converted_Delta_T, 
+            self.converted_Approach_Temperature
         ]]
 
         forecast_result = model_random_forest.predict(data_for_prediction)

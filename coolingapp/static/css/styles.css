@@ -1983,6 +1983,23 @@ tr:hover {
 /* ---------End Dashboard page-------- */
 
 /* ---------Cooling Forecast page-------- */
+.content_coolingforecast {
+  display: flex; /* ใช้ Flexbox จัดการ layout */
+  justify-content: space-between; /* จัดข้อมูลในแนวนอนให้ห่างกัน */
+  align-items: start; /* จัดข้อมูลในแนวตั้งให้เริ่มจากบน */
+  padding: 20px 0; /* เพิ่ม padding บน-ล่าง 20px */
+}
+
+.content_coolingform {
+  flex: 1; /* ให้ form ครอบคลุมพื้นที่ทั้งหมดของแถว flex */
+  margin-right: 50px; /* เพิ่ม margin ทางขวา 20px */
+}
+
+/* คุณสามารถเพิ่มส่วน content ที่จะแสดงทางด้านขวาได้ตรงนี้ */
+.content_right_side {
+  flex: 1; /* ให้ส่วนขวาครอบคลุมพื้นที่ทั้งหมดของแถว flex */
+}
+
 .cooling_title{
   color: #235781;
 }
@@ -1999,8 +2016,19 @@ tr:hover {
   border: 2px solid #68e8ff;
   border-radius: 4px;
   font-size: 16px;
-  margin-top: 10px;
   margin-bottom: -30px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.idcooling {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 280px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: -50px;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -2026,14 +2054,22 @@ tr:hover {
   background: #ffffff54;
   backdrop-filter: blur(5px);
   box-shadow: 0 1px 10px -3px rgba(0, 0, 0, 0.2);
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 label[for="id_cooling_input"]{
   color: #3989b7;
   font-size: 20px;
   font-weight: normal;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+label[for="labelidcooling"]{
+  color: #3989b7;
+  font-size: 20px;
+  font-weight: normal;
+
 }
 
 label[for="id_cooling_input"]:hover{

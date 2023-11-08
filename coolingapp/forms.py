@@ -52,10 +52,11 @@ class CoolingForecastForm(forms.ModelForm):
     class Meta:
         model = CoolingForecast
         fields = [
-            'InletTemp', 'OutletTemp', 'OutdoorWetBulb', 'OutdoorAirTemp', 
+            'cooling_machine_number', 'InletTemp', 'OutletTemp', 'OutdoorWetBulb', 'OutdoorAirTemp', 
             'OutdoorAirHumidity', 'Kw_cooling', 'Kw_Chiller'
         ]
         widgets = {
+            'cooling_machine_number': forms.TextInput(attrs={'placeholder': 'Enter Id Cooling Tower', 'class': 'cooling-input'}),
             'InletTemp': forms.NumberInput(attrs={'placeholder': 'Enter Inlet Temperature', 'class': 'cooling-input'}),
             'OutletTemp': forms.NumberInput(attrs={'placeholder': 'Enter Outlet Temperature', 'class': 'cooling-input'}),
             'OutdoorWetBulb': forms.NumberInput(attrs={'placeholder': 'Enter Outdoor Wet Bulb', 'class': 'cooling-input'}),

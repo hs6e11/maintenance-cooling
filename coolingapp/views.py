@@ -11,6 +11,8 @@ from coolingapp.models import CustomUser, Profile, CoolingForecast, Event
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.utils.decorators import method_decorator
+from itertools import groupby
+from operator import attrgetter
 
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
@@ -61,11 +63,16 @@ def about(request):
 
 @login_required
 def dashboard(request):
-    forecasts = CoolingForecast.objects.all()
+    forecasts = CoolingForecast.objects.all().order_by('cooling_machine_number')
+    grouped_forecasts = {
+        key: list(group)
+        for key, group in groupby(forecasts, key=attrgetter('cooling_machine_number'))
+    }
     context = {
-        'forecasts': forecasts
+        'grouped_forecasts': grouped_forecasts
     }
     return render(request, "dashboard.html", context)
+
 
 
 @login_required
