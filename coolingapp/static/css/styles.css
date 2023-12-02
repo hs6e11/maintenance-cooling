@@ -2214,3 +2214,26 @@ label[for="id_end_time"]:hover{
 .title_event:hover {
   color: #ffffff;
 }
+
+/**/
+
+.carousel-container {
+  position: relative;
+  width: 1500px;
+  height: 700px;
+  overflow: hidden;
+}
+
+.carousel-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-container img.active {
+  opacity: 1;
+}

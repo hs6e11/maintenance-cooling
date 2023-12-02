@@ -1,666 +1,360 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-<style>
-
-.clearfix {
-    float: none;
-    clear: both;
-}
-
-h2 {
-    font-size: 42px;
-    color: #ffc201;
-    display: block;
-    text-align: center;
-    margin: 30px 0 0 0;
-}
-
-h2 span {
-    color: #46d7af;
-}
-
-.shape_wrapper {
-    background: #c5eaff;
-    width: 600px;
-    height: 450px;
-    border: 12px solid #fff;
-    border-radius: 5px;
-    -webkit-box-shadow: 1px 0px 8px 0px rgba(0, 0, 0, 0.16);
-    -moz-box-shadow: 1px 0px 8px 0px rgba(0, 0, 0, 0.16);
-    box-shadow: 1px 0px 8px 0px rgba(0, 0, 0, 0.16);
-    overflow: hidden;
-    margin: 80px auto;
-}
-
-.shape_wrapper .shape_container {
-    padding: 30px;
-    position: relative;
-}
-/* shape 2 */
-
-.shape2 {
-    margin-top: 50px;
-    height: 100%;
-    padding-bottom: 30px;
-    overflow: hidden;
-}
-
-.shape2 .shape_container {
-    margin: 0 auto;
-    display: table;
-}
-
-.cloud_messages_wrapper {
-    float: left;
-    position: relative;
-}
-
-.cloud_messages_wrapper ul {
-    padding: 0;
-    list-style: none;
-}
-
-.cloud_messages_wrapper ul li {
-    display: block;
-    margin-bottom: 50px;
-    position: relative;
-}
-
-.cloud_messages_wrapper ul li:after {
-    content: '';
-    background: #8cc5f7;
-    width: 8px;
-    height: 100%;
-    position: absolute;
-    left: 10px;
-}
-
-.cloud_messages_wrapper ul:after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 24px solid #8cc5f7;
-    position: absolute;
-    bottom: 28px;
-    left: 20px;
-}
-
-.cloud_messages_wrapper.part2 ul:after {
-    left: auto;
-    right: 20px;
-    bottom: -23px
-}
-
-.part1 ul li:nth-child(1) {
-    margin-bottom: 80px;
-}
-
-.part2 {
-    margin-top: 102px;
-    margin-left: -50px;
-}
-
-.part2 ul li:after {
-    right: 10px;
-    left: auto;
-}
-
-.part2 ul li:nth-child(2) .message_wrapper {
-    width: 80px;
-    float: right;
-}
-
-.part2 ul li:nth-child(2) .message_box_icon {
-    display: block;
-    float: none;
-    width: 0;
-    margin: 0 auto;
-    margin-bottom: 10px;
-}
-
-.part2 ul li:nth-child(2) .message_box_modal {
-    display: block;
-    margin-left: 0;
-    width: 100%;
-}
-
-.cloud_messages_wrapper ul li:last-child:after {
-    content: '';
-    background: transparent;
-}
-
-.message_wrapper {
-    background: #8cc5f7;
-    width: 160px;
-    border-radius: 6px;
-    padding: 10px;
-}
-
-.message_box_icon {
-    border-radius: 3px;
-    border: solid #2196ee;
-    border-top-color: #163d76;
-    border-top-width: 16px;
-    border-left-width: 20px;
-    border-right-width: 20px;
-    border-bottom-width: 11px;
-    display: inline-block;
-    float: left;
-}
-
-.message_box_modal {
-    display: inline-block;
-    margin-left: 20px;
-    width: 100px;
-}
-
-.message_box_modal span {
-    height: 4px;
-    border-radius: 4px;
-    background: #fff;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.message_box_modal span:nth-child(1) {
-    background: #2196ee;
-    animation: message_box1 3s linear infinite alternate;
-}
-
-.message_box_modal span:nth-child(2) {
-    animation: message_box2 4s 2s linear infinite alternate;
-}
-
-.message_box_modal span:nth-child(3) {
-    animation: message_box3 5s 3s linear infinite alternate;
-}
-
-.message_box_modal span:nth-child(4) {
-    width: 60%;
-}
-
-.message_box_modal span:nth-child(5) {
-    animation: message_box1 3s 4s linear infinite alternate;
-}
-
-.message_box_modal span:nth-child(6) {
-    animation: message_box4 5s 4s linear infinite alternate;
-}
-
-.message_box_modal span:last-child {
-    margin-bottom: 0;
-}
-
-@-webkit-keyframes message_box1 {
-    0% {
-        width: 0;
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    100% {
-        width: 70%;
+    
+    {% comment %} body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    } {% endcomment %}
+    
+    .wrappercard {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
     }
-}
-
-@keyframes message_box1 {
-    0% {
-        width: 0;
+    
+    .cardinformation {
+      position: relative;
+      width: 325px;
+      height: 450px;
+      background: #000;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     }
-    100% {
-        width: 70%;
+    
+    .poster {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
-}
-
-@-webkit-keyframes message_box2 {
-    0% {
-        width: 0;
+    
+    .poster::before {
+      content: '';
+      position: absolute;
+      bottom: -45%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      transition: 0.3s;
     }
-    100% {
-        width: 90%;
+    
+    .cardinformation:hover .poster::before {
+      bottom: 0;
     }
-}
-
-@keyframes message_box2 {
-    0% {
-        width: 0;
+    
+    .poster img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
     }
-    100% {
-        width: 90%;
+    
+    .cardinformation:hover .poster img {
+      transform: scale(1.1);
     }
-}
-
-@-webkit-keyframes message_box3 {
-    0% {
-        width: 0;
+    
+    .details {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      height: auto;
+      padding: 1.5em 1.5em 2em;
+      background: #000a;
+      backdrop-filter: blur(16px) saturate(120%);
+      transition: 0.3s;
+      color: #fff;
+      z-index: 2;
     }
-    100% {
-        width: 100%;
+    
+    .cardinformation:hover .details {
+      bottom: 0;
     }
-}
-
-@keyframes message_box3 {
-    0% {
-        width: 0;
+    
+    .details h1,
+    .details h2 {
+      font-weight: 700;
     }
-    100% {
-        width: 100%;
+    
+    .details h1 {
+      font-size: 1.5em;
+      margin-bottom: 5px;
     }
-}
-
-@-webkit-keyframes message_box6 {
-    0% {
-        width: 0;
+    
+    .details h2 {
+      font-weight: 400;
+      font-size: 1em;
+      margin-bottom: 10px;
+      opacity: 0.6;
     }
-    100% {
-        width: 70%;
+    
+    .details .rating {
+      position: relative;
+      margin-bottom: 15px;
+      display: flex;
+      gap: 0.25em;
     }
-}
-
-@keyframes message_box6 {
-    0% {
-        width: 0;
+    
+    .details .rating i {
+      color: #e3c414;
     }
-    100% {
-        width: 70%;
+    
+    .details .rating span {
+      margin-left: 0.25em;
     }
-}
-
-.cloudWrapper .cloud {
-    width: 250px;
-    height: 80px;
-    background: #2196ee;
-    display: inline-block;
-    border-radius: 50px;
-    position: relative;
-    float: left;
-    z-index: 11;
-    margin-bottom: 40px;
-    animation: moveCloud 10s linear infinite alternate;
-}
-
-.cloudWrapper .cloudOne {
-    width: 120px;
-    height: 100px;
-    display: inline-block;
-    position: absolute;
-    background: #2196ee;
-    border-radius: 50%;
-    top: -30px;
-    left: 31px;
-    animation: moveCloud 7s linear infinite alternate;
-}
-
-.cloudWrapper .cloudTwo {
-    width: 80px;
-    height: 60px;
-    display: inline-block;
-    position: absolute;
-    background: #2196ee;
-    border-radius: 50%;
-    top: -25px;
-    right: 40px;
-    animation: moveCloud 10s linear infinite alternate;
-}
-
-.cloudWrapper .smilyShape {
-    display: inline-block;
-    margin-top: -40px;
-    margin-left: 20px;
-    position: relative;
-}
-
-@-webkit-keyframes smilyShape {
-    0% {
-        transform: rotate(0);
+    
+    .details .tags {
+      display: flex;
+      gap: 0.375em;
+      margin-bottom: 0.875em;
+      font-size: 0.85em;
     }
-    100% {
-        transform: rotate(360deg);
+    
+    .details .tags span {
+      padding: 0.35rem 0.65rem;
+      color: #fff;
+      border: 1.5px solid rgba(255 255 255 / 0.4);
+      border-radius: 4px;
+      border-radius: 50px;
     }
-}
-
-@keyframes smilyShape {
-    0% {
-        transform: rotate(0);
+    
+    .details .desc {
+      color: #fff;
+      opacity: 0.8;
+      line-height: 1.5;
+      margin-bottom: 1em;
     }
-    100% {
-        transform: rotate(360deg);
+    
+    .details .cast h3 {
+      margin-bottom: 0.5em;
     }
-}
-
-.cloudWrapper .smilyBox {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: #ff9e5c;
-    margin: 0 auto;
-    margin-top: 7px;
-}
-
-.smilyFace {
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-    z-index: 1;
-    position: relative;
-}
-
-.smilyFace .eye-wrap {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-    background: #163d76;
-    margin: 0 10px;
-    position: relative;
-}
-
-.smilyFace .mouth-wrap {
-    width: 18px;
-    height: 12px;
-    display: block;
-    background: #163d76;
-    margin: 0 auto;
-    text-align: center;
-    border-top-left-radius: 100px;
-    border-top-right-radius: 100px;
-    margin-top: 10px;
-}
-
-.smilyFace .barWrap {
-    border: 3px solid #163d76;
-    width: 20px;
-    height: 30px;
-    display: inline-block;
-    border-radius: 50%;
-    position: absolute;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-}
-
-.smilyFace .bar1 {
-    transform: rotate(120deg);
-    left: -33px;
-    top: -28px;
-}
-
-.smilyFace .bar2 {
-    transform: rotate(-120deg);
-    left: 15px;
-    top: -28px;
-}
-
-.smilyShape .smilyFace {
-    position: absolute;
-    right: 20px;
-    top: 41px;
-}
-
-.smilyShape .smilyFace .eye-wrap {
-    animation: smilyeye 6s linear infinite alternate;
-}
-
-@-webkit-keyframes smilyeye {
-    0% {
-        transform: translate(0);
+    
+    .details .cast ul {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+      width: 100%;
     }
-    33% {
-        transform: translate(5px);
+    
+    .details .cast ul li {
+      list-style: none;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1.5px solid #fff;
     }
-    66% {
-        transform: translate(0);
+    
+    .details .cast ul li img {
+      width: 100%;
+      height: 100%;
     }
-    100% {
-        transform: translate(-5px);
-    }
-}
-
-@keyframes smilyeye {
-    0% {
-        transform: translate(0);
-    }
-    33% {
-        transform: translate(5px);
-    }
-    66% {
-        transform: translate(0);
-    }
-    100% {
-        transform: translate(-5px);
-    }
-}
-
-.smilyShape .mouth-wrap {
-    border-radius: 0;
-    height: 4px;
-    margin-top: 15px;
-}
-
-.drop_wrapper {
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    right: 0;
-    text-align: center;
-}
-
-.drop_wrapper .drop {
-    width: 10px;
-    height: 10px;
-    background: #8cc5f7;
-    display: inline-block;
-    border-radius: 20px;
-    margin: 0 12px;
-    position: relative;
-    border-top-color: transparent;
-}
-
-.drop_wrapper .drop:before {
-    content: '';
-    background: #8cc5f7;
-    width: 8px;
-    height: 10px;
-    position: absolute;
-    top: -2px;
-    border-radius: 50%;
-    left: 0;
-    right: 0;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.drop_wrapper .drop:nth-child(1) {
-    animation: drop 1s linear infinite;
-}
-
-.drop_wrapper .drop:nth-child(2) {
-    top: 0px;
-    animation: drop 2s linear infinite;
-}
-
-.drop_wrapper .drop:nth-child(3) {
-    top: 5px;
-    animation: drop 5s linear infinite;
-}
-
-.drop_wrapper .drop:nth-child(4) {
-    top: 8px;
-    animation: drop 1s linear infinite;
-}
-
-.drop_wrapper .drop:nth-child(4) {
-    top: 10px;
-    animation: drop 4s linear infinite;
-}
-
-.drop_wrapper .drop:nth-child(5) {
-    animation: drop 7s linear infinite;
-}
-
-@-webkit-keyframes drop {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(80px);
-    }
-}
-
-@keyframes drop {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(80px);
-    }
-}
-
-.bucket {
-    width: 200px;
-    height: 30px;
-    border: 1px solid #2196ee;
-    position: absolute;
-    bottom: -30px;
-    background: #8cc5f7;
-    border-top: none;
-    left: 57px;
-    z-index: 1;
-}
-
-.bucket:before {
-    content: '';
-    border: 1px solid #2196ee;
-    position: absolute;
-    left: -12px;
-    top: -12px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border-bottom-right-radius: 0;
-}
-
-.bucket:after {
-    content: '';
-    border: 1px solid #2196ee;
-    position: absolute;
-    right: -12px;
-    top: -12px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border-bottom-left-radius: 0;
-}
-
-</style>
-    <body>
-<!-- Shape 2 -->
-<section class="shape_wrapper shape2">
-    <div class="shape_container">
-            <div class="cloud_messages_wrapper part1">
-                    <ul>
-                            <li>
-                                    <div class="message_wrapper">
-                                            <div class="message_box_icon"></div>
-                                            <div class="message_box_modal">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                            </div>
-                                    </div>
-                            </li>
-                            <li>
-                                    <div class="message_wrapper">
-                                            <div class="message_box_icon"></div>
-                                            <div class="message_box_modal">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                            </div>
-                                    </div>
-                            </li>
-                            <li>
-                                    <div class="message_wrapper">
-                                            <div class="message_box_icon"></div>
-                                            <div class="message_box_modal">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                            </div>
-                                    </div>
-                            </li>
-                    </ul>
-            </div>
-            <div class="cloud_messages_wrapper part2">
-                    <ul>
-                            <li>
-                                    <div class="message_wrapper">
-                                            <div class="message_box_icon"></div>
-                                            <div class="message_box_modal">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                            </div>
-                                    </div>
-                            </li>
-                            <li>
-                                    <div class="message_wrapper">
-                                            <div class="message_box_icon"></div>
-                                            <div class="message_box_modal">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                            </div>
-                                    </div>
-                            </li>
-                    </ul>
-            </div>
-            <div class="clearfix"></div>
-            <div class="cloudWrapper">
-                    <div class="cloud">
-                            <span class="cloudOne"></span>
-                            <span class="cloudTwo"></span>
-                            <div class="smilyFace">
-                                    <div class="eye1 eye-wrap">
-                                            <span class="bar1 barWrap"></span>
-                                    </div>
-                                    <div class="eye2 eye-wrap">
-                                            <span class="bar2 barWrap"></span>
-                                    </div>
-                                    <div class="mouth-wrap"></div>
-                            </div>
-                            <div class="drop_wrapper">
-                                    <span class="drop"></span>
-                                    <span class="drop"></span>
-                                    <span class="drop"></span>
-                                    <span class="drop"></span>
-                                    <span class="drop"></span>
-                            </div>
-                    </div>
-                    <div class="smilyShape">
-                            <div class="smilyBox">
-                                    <div class="smilyFace">
-                                            <div class="eye1 eye-wrap">
-                                                    <span class="bar1 barWrap"></span>
-                                            </div>
-                                            <div class="eye2 eye-wrap">
-                                                    <span class="bar2 barWrap"></span>
-                                            </div>
-                                            <div class="mouth-wrap"></div>
-                                    </div>
-                            </div>
-                    </div>
-            </div>
-            <div class="bucket">
-            </div>
+  </style>
+  <body>
+    <div class="wrappercard">
+      <div class="cardinformation">
+        <div class="poster">
+          <img src="/static/assets/img/technician/no_pnoi.jpg" alt="Location Unknown" />
+        </div>
+        <div class="details">
+            <h1>Sitthichai boonleng</h1>
+            <h2>• Noi •</h2>
+            <div class="rating">
+              <span>Technician Supervisor</span>
+          </div>
+          <div class="tags">
+            <span class="tag yellow"><i class="fa fa-envelope" aria-hidden="true"></i> Email</span>
+            <span class="tag"><i class="fa fa-phone" aria-hidden="true"></i> Phone</span>
+            <span class="tag blue"><i class="fa fa-comment" aria-hidden="true"></i> Message</span>
+          </div>
+          <p class="desc">การทำงานซ่อมบำรุงไม่ใช่แค่การทำให้เครื่องจักรเดิมให้ดีเท่าเดิม แต่ยังเป็นการให้ชีวิตใหม่ให้กับสิ่งที่ถูกลืม</p>
+          <div class="cast">
+            <h3>Photo</h3>
+            <ul>
+              <li>
+                <img src="/static/assets/img/technician/workpnoi_1.jpg" alt="work noi 1" title="work noi 1" />
+              </li>
+              <li>
+                <img src="/static/assets/img/technician/workpnoi_2.jpg" alt="work noi 2" title="work noi 2" />
+              </li>
+              <li>
+                <img src="/static/assets/img/technician/workpnoi_3.jpg" alt="work noi 3" title="work noi 3" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="cardinformation">
+        <div class="poster">
+          <img src="/static/assets/img/technician/no_pjoke.jpg" alt="Location Unknown" />
+        </div>
+        <div class="details">
+            <h1>Nopporn</h1>
+            <h2>• Joke •</h2>
+            <div class="rating">
+              <span>Technician</span>
+          </div>
+          <div class="tags">
+            <span class="tag yellow"><i class="fa fa-envelope" aria-hidden="true"></i> Email</span>
+            <span class="tag"><i class="fa fa-phone" aria-hidden="true"></i> Phone</span>
+            <span class="tag blue"><i class="fa fa-comment" aria-hidden="true"></i> Message</span>
+          </div>
+          <p class="desc">ช่างเทคนิคมีความสามารถที่จะทำให้เครื่องจักรมันกลับมาดีเหมือนเดิม! ความลับคือ... ถ้าไม่แน่ใจว่าเป็นอะไรที่เสียหาย ให้ตบตีดู</p>
+          <div class="cast">
+            <h3>Photo</h3>
+            <ul>
+                <li>
+                    <img src="/static/assets/img/technician/workpjoke_1.jpg" alt="work joke 1" title="work joke 1" />
+                  </li>
+                  <li>
+                    <img src="/static/assets/img/technician/workpjoke_2.jpg" alt="work joke 2" title="work joke 2" />
+                  </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="cardinformation">
+        <div class="poster">
+          <img src="/static/assets/img/technician/no_ppok.jpg" alt="Location Unknown" />
+        </div>
+        <div class="details">
+            <h1>Patiphon Aocharot</h1>
+            <h2>• Pok •</h2>
+            <div class="rating">
+              <span>Technician</span>
+          </div>
+          <div class="tags">
+            <span class="tag yellow"><i class="fa fa-envelope" aria-hidden="true"></i> Email</span>
+            <span class="tag"><i class="fa fa-phone" aria-hidden="true"></i> Phone</span>
+            <span class="tag blue"><i class="fa fa-comment" aria-hidden="true"></i> Message</span>
+          </div>
+          <p class="desc">ช่างเทคนิคคือนักแสดงที่ไม่ได้แสดงเพียงแค่การซ่อมบำรุงเครื่องจักร แต่ยังต้องมีทักษะในการแสดงความตลกในระหว่างการทำงาน</p>
+          <div class="cast">
+            <h3>Photo</h3>
+            <ul>
+                <li>
+                    <img src="/static/assets/img/technician/workppok_1.jpg" alt="work pok 1" title="work pok 1" />
+                  </li>
+                  <li>
+                    <img src="/static/assets/img/technician/workppok_2.jpg" alt="work pok 2" title="work pok 2" />
+                  </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="cardinformation">
+        <div class="poster">
+          <img src="/static/assets/img/technician/no_pnut.jpg" alt="Location Unknown" />
+        </div>
+        <div class="details">
+            <h1>Natdanai Sangkhathamrong</h1>
+            <h2>• Nut •</h2>
+            <div class="rating">
+              <span>Technician</span>
+          </div>
+          <div class="tags">
+            <span class="tag yellow"><i class="fa fa-envelope" aria-hidden="true"></i> Email</span>
+            <span class="tag"><i class="fa fa-phone" aria-hidden="true"></i> Phone</span>
+            <span class="tag blue"><i class="fa fa-comment" aria-hidden="true"></i> Message</span>
+          </div>
+          <p class="desc">ช่างเทคนิคคือผู้ที่เคยถูกเรียกว่า 'นักดูดาวน์' ยิ่งเครื่องจักรเสียมาก เขาก็ดูดาวน์มากขึ้น</p>
+          <div class="cast">
+            <h3>Photo</h3>
+            <ul>
+              <li>
+                <img src="/static/assets/img/technician/workpnut_1.jpg" alt="work nut 1" title="work nut 1" />
+              </li>
+              <li>
+                <img src="/static/assets/img/technician/workpnut_2.jpg" alt="work nut 2" title="work nut 2" />
+              </li>
+              <li>
+                <img src="/static/assets/img/technician/workpnut_3.jpg" alt="work nut 3" title="work nut 3" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="cardinformation">
+        <div class="poster">
+          <img src="/static/assets/img/technician/no_toon.jpg" alt="Location Unknown" />
+        </div>
+        <div class="details">
+            <h1>Phiraphad Tairadphaphum</h1>
+            <h2>• Toon •</h2>
+            <div class="rating">
+              <span>Technician Assistant</span>
+          </div>
+          <div class="tags">
+            <span class="tag yellow"><i class="fa fa-envelope" aria-hidden="true"></i> Email</span>
+            <span class="tag"><i class="fa fa-phone" aria-hidden="true"></i> Phone</span>
+            <span class="tag blue"><i class="fa fa-comment" aria-hidden="true"></i> Message</span>
+          </div>
+          <p class="desc">ผู้ช่วยช่างเทคนิคคือคนที่มีความรักใหญ่พอที่จะทนทุกครั้งที่ช่างบอกว่า 'ช่วยด้วย'</p>
+          <div class="cast">
+            <h3>Photo</h3>
+            <ul>
+                <li>
+                    <img src="/static/assets/img/technician/worktoon_1.jpg" alt="work toon 1" title="work toon 1" />
+                  </li>
+                  <li>
+                    <img src="/static/assets/img/technician/worktoon_2.jpg" alt="work toon 2" title="work toon 2" />
+                  </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="cardinformation">
+        <div class="poster">
+          <img src="/static/assets/img/technician/no_tonhom.jpg" alt="Location Unknown" />
+        </div>
+        <div class="details">
+          <h1>Pattarawan Chakrapandhu</h1>
+          <h2>• Tonhom •</h2>
+          <div class="rating">
+            <span>Admin</span>
+          </div>
+          <div class="tags">
+            <span class="tag yellow"><i class="fa fa-envelope" aria-hidden="true"></i> Email</span>
+            <span class="tag"><i class="fa fa-phone" aria-hidden="true"></i> Phone</span>
+            <span class="tag blue"><i class="fa fa-comment" aria-hidden="true"></i> Message</span>
+          </div>
+          <p class="desc">ความสัมพันธ์มีความซับซ้อนเหมือนกับโมเดลการพยากรณ์ ไม่สามารถทำนายได้ด้วยข้อมูลที่ไม่เพียงพอ</p>
+          <div class="cast">
+            <h3>Photo</h3>
+            <ul>
+              <li>
+                <img src="/static/assets/img/technician/workhom_1.jpg" alt="work tonhom 1" title="work tonhom 1" />
+              </li>
+              <li>
+                <img src="/static/assets/img/technician/workhom_2.jpg" alt="work tonhom 2" title="work tonhom 2" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
-    </body>
+  </body>
 {% endblock %}
-

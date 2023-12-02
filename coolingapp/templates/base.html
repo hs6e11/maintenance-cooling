@@ -106,7 +106,7 @@
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
               <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Maintenance System</h5>
-                <button type="button" class="btn-close custom-close-button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                {% comment %} <button type="button" class="btn-close custom-close-button" data-bs-dismiss="offcanvas" aria-label="Close"></button> {% endcomment %}
               </div>
               <div class="offcanvas-body">
               
@@ -135,7 +135,7 @@
                   <a class="nav-link" href="{% url 'coolingapp:cooling_forecast' %}"><i class="fa fa-area-chart" aria-hidden="true"></i> Prediction</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'coolingapp:maintenance' %}"><i class="fa fa-wrench" aria-hidden="true"></i> Maintenance Request</a>
+                  <a class="nav-link" href="{% url 'coolingapp:maintenance' %}"><i class="fa fa-wrench" aria-hidden="true"></i> Contact information</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'coolingapp:workpermit' %}"><i class="fa fa-cloud" aria-hidden="true"></i> Work Permit</a>
