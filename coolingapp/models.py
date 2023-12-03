@@ -6,8 +6,7 @@ from django.utils import timezone
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
 from linebot.exceptions import LineBotApiError
-
-# Create your models here.
+from decouple import config
 
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
@@ -19,11 +18,17 @@ class Profile(models.Model):
     employee_id = models.CharField(max_length=100, default="")
     profile_picture = models.ImageField(blank=True, null=True)
     user = models.OneToOneField("coolingapp.CustomUser", on_delete=models.CASCADE)
+    # Add the is_profile_updated field
+    is_profile_updated = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user.username
 
 model_random_forest = load('coolingapp/model_ml/model_random_forest_cooling.pkl')
 
-LINE_CHANNEL_ACCESS_TOKEN = 'xLnD7d+Lc9/Qq0uJoiF7F/rzClvuZIFCcByie0pNd12qzmNPSiv89AiAtEuSB4sLvn4bKRKAlFvEZjCcDcjHJv9nMCa6beIE+Ehzn5A6NGWYmxkRB0KquHfTS2YkLAOqalYDKRGld8JJ5nzpGCMWzQdB04t89/1O/w1cDnyilFU='
-LINE_USER_ID = 'U83f4c214d510392261bd36ffe921a611'
+LINE_CHANNEL_ACCESS_TOKEN = config('LINE_CHANNEL_ACCESS_TOKEN')
+LINE_USER_ID = config('LINE_USER_ID')
+
 
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 

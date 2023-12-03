@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 from decouple import Csv, config
+from dotenv import load_dotenv
 import environ
+
+load_dotenv
+
 
 # env = environ.Env()
 # environ.Env.read_env()
@@ -25,13 +29,7 @@ env_schema = dict(
     # USE_TZ=(bool, True),
     # STATIC_URL=(str, 'static/'),
     # LOGIN_URL=(str, 'login/'),
-    LOG_LEVEL=(str, 'INFO'),
-    DB_NAME=(str, 'dbcoolingapp'),
-    DB_USER=(str, 'postgres'),
-    DB_PASSWORD=(str, '1234'),
-    DB_HOST=(str, 'localhost'),
-    DB_PORT=(str, '5434'),
-    SECRET_KEY=(str, 'django-insecure-h$q$n36sjg@^lyy$-zfe%#f!14)2b7b_#b#&)a-@)_mw^npr$4'),    
+    # LOG_LEVEL=(str, 'INFO'),      
     # AUTHEN_SECRET_KEY=(str, 'RL72rg9bPzajnmwP9cB8vrKuJaIN6Iy6N99gncjD8QE='),
     # EMAIL_HOST=(str, 'localhost'),
     # EMAIL_PORT=(str, '1025'),
@@ -60,12 +58,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = []
+production_host = os.getenv('PRODUCTION_HOST')
+ALLOWED_HOSTS = [production_host] if production_host is not None else []
 
 
 # Application definition
@@ -118,11 +117,11 @@ WSGI_APPLICATION = 'cooling_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'PASSWORD': DB_PASSWORD,
-        'HOST': DB_HOST,
-        'PORT': DB_PORT,
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 
