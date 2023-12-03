@@ -2,6 +2,7 @@
   "dependencies": {
     "@fullcalendar/core": "^6.1.9",
     "bootstrap": "^5.3.1",
+    "bootstrap-icons": "^1.11.2",
     "fullcalendar": "^6.1.9",
     "fullcalendar-scheduler": "^6.1.9"
   },

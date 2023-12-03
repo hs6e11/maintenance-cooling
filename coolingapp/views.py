@@ -73,7 +73,9 @@ def dashboard(request):
     }
     return render(request, "dashboard.html", context)
 
-
+@login_required
+def powerbi(request):
+    return render(request,"powerbi.html")
 
 @login_required
 def workpermit(request):
@@ -334,3 +336,37 @@ class EventDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('coolingapp:event_list')  # Adjust the namespace and URL name as per your urls.py
+
+def chang_theme(request: HttpRequest):
+    response = HttpResponseRedirect(reverse ("coolingapp:index"))
+
+    theme = request.GET.get("theme")
+    if theme == "dark":
+        response.set_cookie("them","dark")
+    else:
+        response.delete_cookie("them")
+    return response
+
+
+def cookie_popup(request):
+    if request.user.is_authenticated:
+        try:
+            consent = CookieConsent.objects.get(user=request.user)
+        except CookieConsent.DoesNotExist:
+            consent = None
+    else:
+        consent = None
+
+    return render(request, 'cookie_popup.html', {'consent': consent})
+
+
+def give_consent(request):
+    if request.user.is_authenticated:
+        try:
+            consent = CookieConsent.objects.get(user=request.user)
+            consent.consent_given = True
+            consent.save()
+        except CookieConsent.DoesNotExist:
+            CookieConsent.objects.create(user=request.user, consent_given=True)
+
+    return HttpResponse("Consent given successfully.")

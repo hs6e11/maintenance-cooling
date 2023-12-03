@@ -5,6 +5,13 @@
 {% endblock %}
 
 {% block content %}
+<body>
+  <div class="contenttextindex-wrap">
+    <h1 class="textindex_h1">การบำรุงรักษาคูลลิ่งทาวเวอร์ด้วยการเรียนรู้ของเครื่อง</h1>
+    <p class="textindex_p">กระบวนการที่ใช้เทคโนโลยีและข้อมูลเพื่อทำนายและป้องกันปัญหาที่อาจเกิดขึ้นในระบบคูลลิ่งทาวเวอร์ (Cooling Tower) โดยให้ความสำคัญกับการใช้เครื่องมือและแบบจำลองอัลกอริทึมที่สามารถประมวลผลข้อมูลในเวลาเรียลไทม์</p>
+    <a href="#" class="btn btn-read-more">อ่านเพิ่มเติม</a>
+  </div>
+  
 <section class="temperature">
 <div class="container_tem">
   
@@ -60,18 +67,104 @@
    
 </div>
 </section>
-
-<div class="whatiscoolingtower">
-  <img src="/static/assets/img/WhatisCoolingTower.png"  style="max-width: 1500px;">
+<div class="cardsmall">
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <img src="/static/assets/img/forindex/card01.jpg" class="card-img-top" alt="{{ image.title }}">
+      <div class="card-body">
+        <h5 class="card-title">การทำนายและการวางแผนระยะยาว</h5>
+        <p class="card-text">การทำนายและการวางแผนระยะยาว Machine Learning ช่วยในการทำนายแนวโน้มและการเปลี่ยนแปลงในระยะยาวของคูลลิ่งทาวเวอร์ ซึ่งช่วยในการวางแผนการบำรุงรักษาและการลงทุนได้ดียิ่งขึ้น</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="/static/assets/img/forindex/card02.jpg" class="card-img-top" alt="{{ image.title }}">
+      <div class="card-body">
+        <h5 class="card-title">การวิเคราะห์ข้อมูล</h5>
+        <p class="card-text">การวิเคราะห์ข้อมูลที่มาจากคูลลิ่งทาวเวอร์ด้วย Machine Learning ช่วยให้สามารถตรวจจับความผิดปกติและทำการบำรุงรักษาได้ก่อนที่จะเกิดความเสียหายร้ายแรง, ช่วยลดค่าใช้จ่ายและเวลาในการหยุดทำงาน</p>
+    </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="/static/assets/img/forindex/card03.jpg" class="card-img-top" alt="{{ image.title }}">
+      <div class="card-body">
+        <h5 class="card-title">การใช้เทคนิคการเรียนรู้ในการพยากรณ์สถานะของคูลลิ่งทาวเวอร์</h5>
+        <p class="card-text">สามารถช่วยในการวิเคราะห์ข้อมูลประสิทธิภาพของคูลลิ่งทาวเวอร์และทำการปรับเปลี่ยนการทำงานอย่างอัตโนมัติเพื่อเพิ่มประสิทธิภา
+          ลดการใช้พลังงาน และตรวจจับสภาวะที่ผิดปกติได้เร็วขึ้น</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="/static/assets/img/forindex/card04.jpg" class="card-img-top" alt="{{ image.title }}">
+      <div class="card-body">
+        <h5 class="card-title">ความสำคัญอุณหภูมิกับประสิทธิภาพของคูลลิ่งทาวเวอร์</h5>
+        <p class="card-text">หน้าที่หลักของคูลลิ่งทาวเวอร์ คือการลดอุณหภูมิของน้ำหรือของเหลวอื่นๆ โดยการถ่ายเทความร้อนจากน้ำไปยังอากาศ อุณหภูมิของน้ำและอากาศมีผลต่ออัตราและประสิทธิภาพของกระบวนการนี้</p>
+          <p>ความแตกต่างระหว่างอุณหภูมิของน้ำที่เข้าและน้ำที่ออกจากคูลลิ่งทาวเวอร์ (ที่เรียกว่า Delta T) เป็นตัวบ่งชี้ความสามารถในการถ่ายเทความร้อน. ยิ่ง Delta T สูง ความสามารถในการถ่ายเทความร้อนก็จะดีขึ้น</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="/static/assets/img/forindex/card05.jpg" class="card-img-top" alt="{{ image.title }}">
+      <div class="card-body">
+        <h5 class="card-title">ความสำคัญอุณหภูมิกับประสิทธิภาพของคูลลิ่งทาวเวอร์</h5>
+        <p class="card-text">อุณหภูมิที่สูงเกินไปหรือต่ำเกินไปอาจส่งผลต่อประสิทธิภาพในการใช้พลังงานของคูลลิ่งทาวเวอร์ และอาจนำไปสู่การใช้พลังงานมากขึ้นเพื่อบรรลุเป้าหมายการลดอุณหภูมิ</p>
+        <p>อุณหภูมิภายนอกหรือสภาพอากาศมีผลต่อการทำงานของคูลลิ่งทาวเวอร์ ต้องมีการปรับแต่งหรือควบคุมคูลลิ่งทาวเวอร์ให้เหมาะสมกับสภาพอากาศที่แตกต่างกัน</p>
+    </div>
+    </div>
+  </div>
+</div>
 </div>
 
-<div class="carousel-container">
-  <img src="/static/assets/img/picture1.png" alt="{{ image.title }}">
-  <img src="/static/assets/img/picture2.png" alt="{{ image.title }}">
-  <img src="/static/assets/img/picture3.png" alt="{{ image.title }}">
-  <img src="/static/assets/img/picture4.png" alt="{{ image.title }}">
-</div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card" >
+      <img src="/static/assets/img/forindex/photooverview.jpg" class="card-img-top" alt="{{ image.title }}">
+      <div class="card-body">
+        <h5 class="card-title">Machine Leaning</h5>
+        <p class="card-text">Machine Learning" หรือ "การเรียนรู้ของเครื่อง" คือสาขาหนึ่งของวิทยาการคอมพิวเตอร์ที่เน้นการพัฒนาโมเดลและวิธีการทำนายโดยอิงจากข้อมูล (data-driven) โดยไม่ต้องระบุโครงสร้างของกฎหรือสูตรคำตอบในล่วงหน้า กล่าวอีกนัยหนึ่งคือการให้คอมพิวเตอร์มีความสามารถในการเรียนรู้และปรับปรุงประสิทธิภาพของงานต่างๆ จากข้อมูลที่ได้รับมา โดยไม่ต้องระบุโครงสร้างของกฎหรือสูตรคำตอบไว้ล่วงหน้า โมเดลที่ได้จาก Machine Learning สามารถนำไปใช้ในหลายๆงานที่ต้องการการเรียนรู้จากข้อมูล</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="/static/assets/img/forindex/photocooling.jpg" class="card-img-top" alt="{{ image.title }}">
+      <div class="card-body">
+        <h5 class="card-title">คูลลิ่งทาวเวอร์ Cooling Tower คืออะไร</h5>
+        <p class="card-text">เป็นอุปกรณ์ที่ใช้สำหรับลดอุณหภูมิของน้ำหรือของเหลวอื่นๆ โดยการเอาความร้อนออกจากน้ำและปล่อยมันไปยังบรรยากาศ คูลลิ่งทาวเวอร์มักพบในหลายอุตสาหกรรม น้ำที่ได้รับความร้อนจากกระบวนการอุตสาหกรรมจะถูกนำมาลดอุณหภูมิ น้ำร้อนนี้จะถูกหมุนเวียนผ่านคูลลิ่งทาวเวอร์ ซึ่งทำให้มันสัมผัสกับอากาศ. ความร้อนจากน้ำจะถูกถ่ายเทไปยังอากาศ ทำให้น้ำเย็นลง ส่วนหนึ่งของน้ำอาจระเหยไปกับอากาศ ซึ่งช่วยลดอุณหภูมิของน้ำที่เหลือ กระบวนการระเหยนี้เป็นส่วนสำคัญในการลดอุณหภูมิในคูลลิ่งทาวเวอร์</p>
+      </div>
+    </div>
+  </div>
+  <div class="col" id="userManualCard">
+    <div class="card">
+      <img src="/static/assets/img/forindex/usermanualcoolingtower.jpg" class="card-img-top" alt="{{ image.title }}">
+      <div class="card-body">
+        <h5 class="card-title">วิธีการใช้งานเบื้องต้น สำหรับการทดลอง</h5>
+        <p class="card-text">ผู้ใช้งานจะต้องเข้าสู่ระบบ Lignim และ เพิ่มเพื่อน line AO ของ Lignum เพื่อทดลองระบบแจ้งเตือน (QR Code ด้านล่าง)
+          จากนั้นไปที่เมนู predictive ระบุเลขของเครื่อง Cooling Tower พร้อมกรอกข้อมูลอุณหภูมิที่แสดงบนหน้าจอของ Cooling Tower โดยผู้ใช้งานจะต้องตรวจสอบข้อมูลก่อนกดปุ่ม Prediction ทุกครั้ง หากมีผลพยากรณ์ไม่ต้องบำรุงรักษาจะมีสถานะเป็น 0 และในกรณีที่ต้องการการบำรุงรักษาจะมีสถานะเป็น 1 ซึ่งหากผู้ใช้งานทำการเพิ่มเพื่อนใน Line OA ของ Lignum แล้ว จะได้รับการแจ้งเตือนหลังผลพยากรณ์ออกมาว่าต้องการการบำรุงรักษาทันที
+          ทั้งนี้ระบบการพยากรณ์เป็นเพียงการคาดการณ์เบื้องต้นเท่านั้น ในสถานการณ์จริงโปรดดำเนินการตรวจสอบก่อน</p>
+        </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="/static/assets/img/forindex/predictivecoolingtower.jpg" class="card-img-top" alt="{{ image.title }}">
+      <div class="card-body">
+        <h5 class="card-title">พยากรณ์การบำรุงรักษาคูลลิ่งทาวเวอร์ด้วยการเรียนรู้ของเครื่อง</h5>
+        <p class="card-text">
+          การบำรุงรักษาคูลลิ่งทาวเวอร์ด้วยการเรียนรู้ของเครื่อง คือกระบวนการที่ใช้เทคโนโลยีและข้อมูลเพื่อทำนายและป้องกันปัญหาที่อาจเกิดขึ้นในระบบคูลลิ่งทาวเวอร์ (Cooling Tower)
+            โดยให้ความสำคัญกับการใช้เครื่องมือและแบบจำลองอัลกอริทึมที่สามารถประมวลผลข้อมูลในเวลาเรียลไทม์ เพื่อดำเนินการปรับปรุงและป้องกันการเสียหายของระบบ ตลอดจนเพิ่มประสิทธิภาพของการทำงานของคูลลิ่งทาวเวอร์ ในทางทฤษฎีแล้วการบำรุงรักษาคูลลิ่งทาวเวอร์ด้วยการเรียนรู้ของเครื่องมีการผนวกความรู้ทางวิศวกรรม วิทยาการข้อมูล และการประมวลผลข้อมูลเพื่อสร้างระบบที่มีความสามารถในการจัดการปัญหาและทำให้ระบบทำงานได้อย่างมีประสิทธิภาพมากยิ่งขึ้น 
 
+          </p>
+        </div>
+    </div>
+  </div>
+</div>
+</body>
 
 
 <script>
@@ -142,7 +235,7 @@ function getCelsius() {
 }
 </script>
 
-<script>
+{% comment %} <script>
   const images = document.querySelectorAll(".carousel-container img");
   let currentIndex = 0;
   let timer;
@@ -183,5 +276,16 @@ function getCelsius() {
   showImage(currentIndex); // Show the first image initially
   startTimer(); // Start the automatic image change on page load
 
+</script> {% endcomment %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const readMoreBtn = document.querySelector('.btn-read-more');
+
+    readMoreBtn.addEventListener('click', function () {
+      const card = document.querySelector('.card');
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 </script>
 {% endblock %}

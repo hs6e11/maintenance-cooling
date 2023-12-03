@@ -1,0 +1,55 @@
+<div class="cookie-popup" id="cookiePopup" {% if consent %} style="display: none;" {% endif %} >
+          <p class="cookietext">🍪 This website uses cookies to provide you with a better user experience. By clicking "Allow," you consent to our use of cookies.</p>
+          <form class="cookiepopupform" id="allowForm">
+              {% csrf_token %}
+              <button class="cookiebutton" type="submit" id="allowButton"><i class="fa fa-paper-plane" aria-hidden="true"></i> Allow</button>
+          </form>
+      </div>
+      
+      <script>
+      // JavaScript to handle closing the cookie popup
+      const allowForm = document.getElementById('allowForm');
+      const cookiePopup = document.getElementById('cookiePopup');
+      
+      allowForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent the form submission
+      
+        // Hide the cookie pop-up
+        cookiePopup.style.display = 'none';
+      
+        // Set a cookie to remember the user's consent decision for 30 days (or use local storage)
+        const now = new Date();
+        now.setDate(now.getDate() + 30);
+        document.cookie = 'cookie_consent=true; expires=' + now.toUTCString() + '; path=/';
+      
+        // Send an AJAX request to update the user's consent status in the backend
+        fetch("{% url 'coolingapp:give_consent' %}", {
+          method: "POST",
+          headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
+          },
+        });
+      });
+      
+      // Helper function to get CSRF token for AJAX request
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      
+      // Check if the user has already given consent using cookies
+      if (document.cookie.includes('cookie_consent=true')) {
+        cookiePopup.style.display = 'none'; // Hide the popup if consent is given
+      }
+      </script>

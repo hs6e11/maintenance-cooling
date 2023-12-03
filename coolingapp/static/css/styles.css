@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
-body {
-font-family: 'Itim', cursive;
-margin: 0;
-padding: 0;
-width: 100%;
-}
-
 /* ------Navbar------- */
 
 .navbar.bg-body-tertiary.fixed-top {
@@ -333,6 +326,7 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
+  font-family: 'Itim', cursive;
 }
 
 * {
@@ -883,8 +877,8 @@ input[type="password"]:focus {
 }
 
 button[type="submit"] {
-  background-color: #63abd3;
-  color: #fff;
+  /* background-color: #63abd3;
+  color: #fff; */
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -892,7 +886,7 @@ button[type="submit"] {
   font-size: 20px;
   margin-top: 30px;
   text-transform: uppercase;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .forgotpass {
@@ -1984,20 +1978,19 @@ tr:hover {
 
 /* ---------Cooling Forecast page-------- */
 .content_coolingforecast {
-  display: flex; /* ใช้ Flexbox จัดการ layout */
-  justify-content: space-between; /* จัดข้อมูลในแนวนอนให้ห่างกัน */
-  align-items: start; /* จัดข้อมูลในแนวตั้งให้เริ่มจากบน */
-  padding: 20px 0; /* เพิ่ม padding บน-ล่าง 20px */
+  display: flex; 
+  justify-content: space-between;
+  align-items: start; 
+  padding: 20px 0;
 }
 
 .content_coolingform {
-  flex: 1; /* ให้ form ครอบคลุมพื้นที่ทั้งหมดของแถว flex */
-  margin-right: 50px; /* เพิ่ม margin ทางขวา 20px */
+  flex: 1;
+  margin-right: 50px;
 }
 
-/* คุณสามารถเพิ่มส่วน content ที่จะแสดงทางด้านขวาได้ตรงนี้ */
 .content_right_side {
-  flex: 1; /* ให้ส่วนขวาครอบคลุมพื้นที่ทั้งหมดของแถว flex */
+  flex: 1;
 }
 
 .cooling_title{
@@ -2219,8 +2212,8 @@ label[for="id_end_time"]:hover{
 
 .carousel-container {
   position: relative;
-  width: 1500px;
-  height: 700px;
+  width: 1200px;
+  height: 600px;
   overflow: hidden;
 }
 
@@ -2237,3 +2230,186 @@ label[for="id_end_time"]:hover{
 .carousel-container img.active {
   opacity: 1;
 }
+
+/* Load*/
+
+.loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url('/static/assets/img/ellipsis.gif') 50% 50% no-repeat;
+}
+
+/* Dark Theme*/
+
+/*--------Cookie---------*/
+.cookie-popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.514);
+  backdrop-filter: blur(5px);
+  max-width: 100%;
+  text-align: center;
+  
+}
+
+.cookie-popup form {
+  display: inline;
+}
+
+.cookie-popup p {
+  margin: 30;
+}
+
+.cookiebutton {
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  /* background-color: #4c8cb1; */
+  color: #4c8cb1;
+  border: none;
+  max-width: 100%;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.cookiebutton:hover {
+  color: #000000;
+}
+.cookietext {
+  color: #17456b;
+  font-size: 20px;
+}
+/*--------END Cookie---------*/
+/*--------Button---------*/
+.buttonsubmit {
+  background-color: #63abd3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 30px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.buttonsubmit:hover {
+  background-color: #006399;
+  color: #ffffff;
+}
+
+.buttonsubmit-prediction {
+  background-color: #4b8eb3;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 30px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.buttonsubmit-prediction:hover {
+  background-color: #009499;
+  color: #ffffff;
+}
+/*--------END Button---------*/
+
+.card {
+  margin-bottom: 50px;
+}
+
+/*Index*/
+
+.btn-read-more {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.contenttextindex-wrap:hover .btn-read-more {
+  transform: translateX(0);
+}
+.contenttextindex-wrap {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.textindex_h1 {
+  color: rgb(27, 66, 110);
+  border: none;
+  padding: 10px 20px;
+  font-size: 40px;
+  margin-top: 60px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.textindex_p {
+  color: rgb(27, 66, 110);
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  text-align: start;
+}
+
+.qrcode {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.cardsmall {
+  margin-bottom: 30px;
+}
+
+/*Dashboard*/
+  .reportdashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reportelectricity_dashboard,
+  .reportwater_dashboard,
+  .maintenance_dashboard {
+    margin-bottom: 30px;
+  }
+
+  .iframe-container {
+    background-color: #ffffff88;
+    backdrop-filter: blur(5px);
+    width: 700px;
+    height: 500px;
+    padding: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  iframe {
+    margin: 0 auto;
+    display: block;
+  }
+
+  .dashboard_title{
+    color: #235781;
+    padding: 5px;
+    font-size: 20px;
+  }
+  .dashboard_title:hover {
+    color: #ffffff;
+  }

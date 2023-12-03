@@ -32,7 +32,7 @@
 </head>
 
 
-<body>
+<body class="{{ request.COOKIES.them }}">
 
     <div class="frame">
         <!-- <div class="plane-container">
@@ -129,16 +129,16 @@
                   <a class="nav-link active" aria-current="page" href="{% url 'coolingapp:index' %}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'coolingapp:dashboard' %}"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'coolingapp:cooling_forecast' %}"><i class="fa fa-area-chart" aria-hidden="true"></i> Prediction</a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link" href="{% url 'coolingapp:maintenance' %}"><i class="fa fa-wrench" aria-hidden="true"></i> Contact information</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'coolingapp:workpermit' %}"><i class="fa fa-cloud" aria-hidden="true"></i> Work Permit</a>
+                  <a class="nav-link" href="{% url 'coolingapp:powerbi' %}"><i class="fa fa-cloud" aria-hidden="true"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'coolingapp:dashboard' %}"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard Cooling</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'coolingapp:cooling_forecast' %}"><i class="fa fa-area-chart" aria-hidden="true"></i> Prediction</a>
                 </li>
                 <li class="nav-item">
                   <li><a class="nav-link" href="{% url 'coolingapp:event_form' %}"><i class="fa fa-pencil" aria-hidden="true"></i> Add Event</a></li>
@@ -215,13 +215,13 @@
           </div>
           <div class="footer-content-column">
             <div class="footer-menu">
-              <h2 class="footer-menu-name"> Company</h2>
+              <h2 class="footer-menu-name"> Theme</h2>
               <ul id="menu-company" class="footer-menu-list">
                 <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                  <a href="#"> About Lignum</a>
+                  <a href="{% url 'coolingapp:chang_theme' %}?theme=default"> Default Theme</a>
                 </li>
                 <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-                  <a href="#">News & Media</a>
+                  <a href="{% url 'coolingapp:chang_theme' %}?theme=dark">Dark Theme</a>
                 </li>
               </ul>
             </div>
@@ -265,7 +265,7 @@
             <div class="footer-call-to-action">
               <h2 class="footer-call-to-action-title"> Let's Chat</h2>
               <p class="footer-call-to-action-description"> Contact us at the agency's LineOA</p>
-              <a class="footer-call-to-action-button button" href="https://lin.ee/MhE4cmo" target="_self"> Get in Touch </a>
+              <a class="footer-call-to-action-button button" href="{% url 'coolingapp:about' %}" target="_self"> Get in Touch </a>
             </div>
             <div class="footer-call-to-action">
               <h2 class="footer-call-to-action-title"> You Call Us</h2>
@@ -311,7 +311,7 @@
         </div>
       </footer>
     </div>
-
+    {% include 'cookie_popup.html' %}
 </body>
 
 <script>

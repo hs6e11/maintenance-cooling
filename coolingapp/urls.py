@@ -41,7 +41,10 @@ urlpatterns = [
     path('events/create/', EventCreateView.as_view(), name='event_form'),
     path('events/<int:pk>/edit/', EventUpdateView.as_view(), name='event_edit'),
     path('events/<int:pk>/delete/', EventDeleteView.as_view(), name='event_delete'),
-
+    path('chang_theme', view=views.chang_theme, name="chang_theme"),
+    path('popup/', views.cookie_popup, name='popup'),
+    path('give_consent/', views.give_consent, name='give_consent'),
+    path("dashboard-overview", view=views.powerbi, name="powerbi"),
 ]
 
 

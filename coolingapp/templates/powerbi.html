@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Dashboard</title>
+{% endblock %}
+
+{% block content %}
+  <div class="reportdashboard">
+    <div class="iframe-container">
+      <div class="reportelectricity_dashboard">
+        <h1 class="dashboard_title">การใช้พลังงานไฟฟ้า</h1>
+        <iframe title="Report Section" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiYjJiZDUwMjAtZmRhOS00YzA3LTg5YjctM2Y3MDk1MWI5NDgyIiwidCI6IjBlY2I3YzgyLTFiODQtNGIzNi1hZGVmLTIwODFiNWMxMTI1YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+      </div>
+    </div>
+
+    <div class="iframe-container">
+      <div class="reportwater_dashboard">
+        <h1 class="dashboard_title">การใช้น้ำประปา</h1>
+        <iframe title="Report Section" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZTI3ZWQzNTUtOGEwZS00OGRjLWI2YTEtMGYzNjczNGYzZjY4IiwidCI6IjBlY2I3YzgyLTFiODQtNGIzNi1hZGVmLTIwODFiNWMxMTI1YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+      </div>
+    </div>
+
+    <div class="iframe-container">
+      <div class="maintenance_dashboard">
+        <h1 class="dashboard_title">รายงานการแจ้งซ่อม</h1>
+        <iframe title="Maintenance Dashboard อก.งอ" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiYThiNjk5Y2YtM2FmZi00YzcxLThmYWYtODQ3MGE1YTU0NTIzIiwidCI6IjBlY2I3YzgyLTFiODQtNGIzNi1hZGVmLTIwODFiNWMxMTI1YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+      </div>
+    </div>
+  </div>
+{% endblock %}
